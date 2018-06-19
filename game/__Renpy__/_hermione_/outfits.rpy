@@ -10,7 +10,7 @@ label __init_variables:
     $ hg_maid_OBJ.breast_layer = "breasts_normal_pressed"
     $ hg_maid_OBJ.top_layers = []
     $ hg_maid_OBJ.top_layers.append("maid_hat.png")
-    
+
     if not hasattr(renpy.store,'hg_gryffCheer_OBJ'):
         $ hg_gryffCheer_OBJ = hermione_outfit()
     $ hg_gryffCheer_OBJ.name = "Griffindor Cheerleader"
@@ -24,7 +24,7 @@ label __init_variables:
     $ hg_gryffCheer_OBJ.action_images = []
     $ hg_gryffCheer_OBJ.actions.append("lift_top")
     $ hg_gryffCheer_OBJ.action_images.append("cherr_flash.png")
-    
+
     if not hasattr(renpy.store,'hg_slythCheer_OBJ'):
         $ hg_slythCheer_OBJ = hermione_outfit()
     $ hg_slythCheer_OBJ.name = "Slythrin Cheerleader"
@@ -38,7 +38,7 @@ label __init_variables:
     $ hg_slythCheer_OBJ.action_images = []
     $ hg_slythCheer_OBJ.actions.append("lift_top")
     $ hg_slythCheer_OBJ.action_images.append("cherr_flash.png")
-    
+
     if not hasattr(renpy.store,'hg_heartDancer_OBJ'):
         $ hg_heartDancer_OBJ = hermione_outfit()
     $ hg_heartDancer_OBJ.name = "Heart Dancer"
@@ -48,7 +48,7 @@ label __init_variables:
     $ hg_heartDancer_OBJ.outfit_layers = []
     $ hg_heartDancer_OBJ.outfit_layers.extend(("heart_legs.png","heart_top.png","heart_collar.png"))
     $ hg_heartDancer_OBJ.breast_layer = "breasts_normal"
-    
+
     if not hasattr(renpy.store,'hg_silkNightgown_OBJ'):
         $ hg_silkNightgown_OBJ = hermione_outfit()
     $ hg_silkNightgown_OBJ.name = "Silk Nightgown"
@@ -58,7 +58,7 @@ label __init_variables:
     $ hg_silkNightgown_OBJ.outfit_layers = []
     $ hg_silkNightgown_OBJ.outfit_layers.append("silk_nightgown.png")
     $ hg_silkNightgown_OBJ.breast_layer = "breasts_normal"
-    
+
     if not hasattr(renpy.store,'hg_pirate_OBJ'):
         $ hg_pirate_OBJ = hermione_outfit()
     $ hg_pirate_OBJ.name = "Pirate"
@@ -68,7 +68,7 @@ label __init_variables:
     $ hg_pirate_OBJ.outfit_layers = []
     $ hg_pirate_OBJ.outfit_layers.extend(("pirate_legs.png","pirate_pants.png","pirate_top.png"))
     $ hg_pirate_OBJ.breast_layer = "breasts_nipfix"
-    
+
     if not hasattr(renpy.store,'hg_powerGirl_OBJ'):
         $ hg_powerGirl_OBJ = hermione_outfit()
     $ hg_powerGirl_OBJ.name = "Power Girl"
@@ -79,7 +79,7 @@ label __init_variables:
     $ hg_powerGirl_OBJ.outfit_layers.extend(("power_cape.png","power_top.png","power_gloves.png","power_belt.png"))
     $ hg_powerGirl_OBJ.breast_layer = "breasts_normal"
     $ hg_powerGirl_OBJ.hair_layer = "power_hair"
-    
+
     if not hasattr(renpy.store,'hg_msMarvel_OBJ'):
         $ hg_msMarvel_OBJ = hermione_outfit()
     $ hg_msMarvel_OBJ.name = "Mrs Marvel"
@@ -89,7 +89,7 @@ label __init_variables:
     $ hg_msMarvel_OBJ.outfit_layers = []
     $ hg_msMarvel_OBJ.outfit_layers.extend(("marvel_pants.png","marvel_top.png","marvel_sash.png","marvel_gloves.png"))
     $ hg_msMarvel_OBJ.breast_layer = "breasts_normal"
-    
+
     if not hasattr(renpy.store,'hg_harleyQuinn_OBJ'):
         $ hg_harleyQuinn_OBJ = hermione_outfit()
     $ hg_harleyQuinn_OBJ.name = "Harley Quinn"
@@ -100,7 +100,7 @@ label __init_variables:
     $ hg_harleyQuinn_OBJ.outfit_layers.extend(("harley_pants.png","harley_top.png","harley_gloves.png","harley_collar.png"))
     $ hg_harleyQuinn_OBJ.breast_layer = "breasts_normal"
     $ hg_harleyQuinn_OBJ.hair_layer = "harley_hair"
-    
+
     if not hasattr(renpy.store,'hg_ballDress_OBJ'):
         $ hg_ballDress_OBJ = hermione_outfit()
     $ hg_ballDress_OBJ.name = "Ball Dress"
@@ -110,7 +110,7 @@ label __init_variables:
     $ hg_ballDress_OBJ.outfit_layers = []
     $ hg_ballDress_OBJ.outfit_layers.extend(("ball_dress_skirt.png","ball_dress_top.png"))
     $ hg_ballDress_OBJ.breast_layer = "breasts_nipfix"
-    
+
     if not hasattr(renpy.store,'hg_christmas_OBJ'):
         $ hg_christmas_OBJ = hermione_outfit()
     $ hg_christmas_OBJ.name = "Christmas Girl"
@@ -122,7 +122,7 @@ label __init_variables:
     $ hg_christmas_OBJ.top_layers = []
     $ hg_christmas_OBJ.top_layers.append("christmas_antlers.png")
     $ hg_christmas_OBJ.breast_layer = "breasts_normal_pressed"
-    
+
     if not hasattr(renpy.store,'hg_laraCroft_OBJ'):
         $ hg_laraCroft_OBJ = hermione_outfit()
     $ hg_laraCroft_OBJ.name = "Lara Croft"
@@ -225,9 +225,9 @@ label __init_variables:
     $ hermione_outfits_list.append(hg_witch_OBJ)
     $ hermione_outfits_list.append(hg_bio_OBJ)
     $ hermione_outfits_list.append(hg_yenn_OBJ)
-    
+
     return
-   
+
 
 
 
@@ -236,41 +236,32 @@ label set_hermione_outfit(outfit):
     show screen blkfade
     hide screen hermione_main
     with d3
-    call h_outfit_OBJ(outfit) 
+    call h_outfit_OBJ(outfit)
     pause .5
     hide screen blkfade
     with d5
     return
-    
+
 label h_outfit_OBJ(outfit):
     if outfit == None:
         $ hermione_costume = False
-        call update_her_uniform 
-        call h_update_hair 
+        call update_her_uniform
+        call h_update_hair
     else:
         $ hermione_costume = True
-        
+
         $ h_request_wear_top = True
         $ hermione_wear_top = True
-        
+
         $ hermoine_outfit_GLBL = outfit
 
         if hermione_use_action and hermione_action in hermoine_outfit_GLBL.actions:
             pass
         else:
-            call h_action("None") 
+            call h_action("None")
 
-        call update_her_uniform 
+        call update_her_uniform
         call h_update_hair 
-        
-        if transparency < 1 or not hermione_wear_top:
-            if not hermione_perm_expand:
-                $ hermione_breasts = "characters/hermione/body/breasts/breasts_normal.png" 
-            else:
-                $ hermione_breasts = "characters/hermione/body/breasts/breasts_expanded_large.png"
-        else:
-            $ hermione_breasts = "characters/hermione/body/breasts/"+outfit.breast_layer+".png"
-        
 
     return
 
@@ -283,7 +274,7 @@ label set_defined_menu_vars:
             if hermione_outfit_names[i] not in ["null",""]:
                 tmp_list_a.append(hermione_outfit_names[i])
                 tmp_list_b.append(i)
-        
+
         h_menu_list = [[0 for i in xrange(2)] for i in xrange(len(tmp_list_a)+1)]
         for i in range(0,len(tmp_list_a)):
             h_menu_list[i][0] = tmp_list_a[i]
@@ -291,14 +282,14 @@ label set_defined_menu_vars:
         h_menu_list[len(h_menu_list)-1][0] = "-nevermind-"
         h_menu_list[len(h_menu_list)-1][1] = -1
     return
-    
 
 
-    
+
+
 init python:
     class outfit_list(list):
         list = []
-    
+
     class hermione_outfit(object):
         name = ""
         purchased = False
@@ -311,8 +302,8 @@ init python:
         hair_layer = ""
         breast_layer = "breasts_nipfix"
         store_image = ""
-        
-        
+
+
         def getMenuText(self):
             return "-"+self.name+"-"
         def getFullPath(self, passed_list):
@@ -328,4 +319,3 @@ init python:
             return self.action_images[self.actions.index(action)]
         def getStoreImage(self):
            return "images/store/cs_gui/"+self.store_image
-    
