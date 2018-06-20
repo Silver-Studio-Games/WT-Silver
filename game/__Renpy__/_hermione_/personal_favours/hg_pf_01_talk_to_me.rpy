@@ -96,7 +96,7 @@ label hg_pf_TalkToMe:
 
     #Event 1 and 2
     if whoring >= 0 and  whoring <= 5:
-        if whoring >= 3 and whoring <= 5:
+        if 3 <= whoring <= 5:
             $ hg_pf_TalkToMe_OBJ.hearts_level = 2 #Event hearts level (0-3)
 
         call her_main("My life has been quite uneventful lately, to be honest...","annoyed","angryL") 
@@ -304,7 +304,7 @@ label hg_pf_TalkToMe:
         hide screen hermione_stand_f #Hermione stands still.
         with d3
         her "Will this be all then?"
-        if whoring >= 0 and whoring <= 2: #LEVEL 01
+        if 0 <= whoring <= 2: #LEVEL 01
             her "*sigh of relief*"
         m "Yes, you can go now."
 

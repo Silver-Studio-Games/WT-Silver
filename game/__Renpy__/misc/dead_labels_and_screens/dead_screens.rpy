@@ -116,11 +116,11 @@ screen hermione_main_old: #Screen that shows a full sprite of HERMIONE.
         elif wear_skirts and not skirt_up and custom_outfit_old <= 19:
             if whoring <= 5:
                 add im.Alpha("characters/hermione/face/legs/legs_01.png", transparency) xpos h_xpos ypos h_ypos
-            elif whoring >= 6 and whoring <= 11: #Mini skirt.
+            elif 6 <= whoring <= 11: #Mini skirt.
                 add im.Alpha("characters/hermione/face/legs/legs_02.png", transparency) xpos h_xpos ypos h_ypos
-            elif whoring >= 12 and whoring <= 19: #Micro skirt.
+            elif 12 <= whoring <= 19: #Micro skirt.
                 add im.Alpha("characters/hermione/face/legs/legs_03.png", transparency) xpos h_xpos ypos h_ypos
-            elif whoring >= 20 and whoring <= 23: #Mini Micro skirt.
+            elif 20 <= whoring <= 23: #Mini Micro skirt.
                 add im.Alpha("characters/hermione/face/legs/legs_04.png", transparency) xpos h_xpos ypos h_ypos
             else: #Mini Mini Micro skirt.
                 add im.Alpha("characters/hermione/face/legs/legs_05.png", transparency) xpos h_xpos ypos h_ypos
@@ -202,17 +202,17 @@ screen hermione_main_old: #Screen that shows a full sprite of HERMIONE.
                     add im.Alpha("characters/hermione/face/shirts/shirt_00.png", transparency) xpos h_xpos ypos h_ypos #The shirts.
                 else:  
                     add "characters/hermione/face/shirts/fingering_01.png" xpos h_xpos ypos h_ypos
-            elif whoring >= 4 and whoring <= 7:
+            elif 4 <= whoring <= 7:
                 if not fingering:
                     add im.Alpha("characters/hermione/face/shirts/shirt_01.png", transparency) xpos h_xpos ypos h_ypos #The shirts.
                 else:  
                     add "characters/hermione/face/shirts/fingering_02.png" xpos h_xpos ypos h_ypos
-            elif whoring >= 8 and whoring <= 14:
+            elif 8 <= whoring <= 14:
                 if not fingering:
                     add im.Alpha("characters/hermione/face/shirts/shirt_02.png", transparency) xpos h_xpos ypos h_ypos #The shirts.
                 else:  
                     add "characters/hermione/face/shirts/fingering_03.png" xpos h_xpos ypos h_ypos
-            elif whoring >= 15 and whoring <= 20:
+            elif 15 <= whoring <= 20:
                 if not fingering:
                     add im.Alpha("characters/hermione/face/shirts/shirt_03.png", transparency) xpos h_xpos ypos h_ypos #The shirts.
                 else:  
@@ -439,11 +439,11 @@ screen hermione_main2:
         elif not skirt_up and custom_outfit_old <= 19:
             if whoring <= 5:
                 add im.Alpha("characters/hermione/face/legs/legs_01.png", transparency) xpos h_xpos ypos h_ypos
-            elif whoring >= 6 and whoring <= 11: #Mini skirt.
+            elif 6 <= whoring <= 11: #Mini skirt.
                 add im.Alpha("characters/hermione/face/legs/legs_02.png", transparency) xpos h_xpos ypos h_ypos
-            elif whoring >= 12 and whoring <= 19: #Micro skirt.
+            elif 12 <= whoring <= 19: #Micro skirt.
                 add im.Alpha("characters/hermione/face/legs/legs_03.png", transparency) xpos h_xpos ypos h_ypos
-            elif whoring >= 20 and whoring <= 23: #Mini Micro skirt.
+            elif 20 <= whoring <= 23: #Mini Micro skirt.
                 add im.Alpha("characters/hermione/face/legs/legs_04.png", transparency) xpos h_xpos ypos h_ypos
             else: #Mini Mini Micro skirt.
                 add im.Alpha("characters/hermione/face/legs/legs_05.png", transparency) xpos h_xpos ypos h_ypos
@@ -525,17 +525,17 @@ screen hermione_main2:
                     add im.Alpha("characters/hermione/face/shirts/shirt_00.png", transparency) xpos h_xpos ypos h_ypos #The shirts.
                 else:  
                     add "characters/hermione/face/shirts/fingering_01.png" xpos h_xpos ypos h_ypos
-            elif whoring >= 4 and whoring <= 7:
+            elif 4 <= whoring <= 7:
                 if not fingering:
                     add im.Alpha("characters/hermione/face/shirts/shirt_01.png", transparency) xpos h_xpos ypos h_ypos #The shirts.
                 else:  
                     add "characters/hermione/face/shirts/fingering_02.png" xpos h_xpos ypos h_ypos
-            elif whoring >= 8 and whoring <= 14:
+            elif 8 <= whoring <= 14:
                 if not fingering:
                     add im.Alpha("characters/hermione/face/shirts/shirt_02.png", transparency) xpos h_xpos ypos h_ypos #The shirts.
                 else:  
                     add "characters/hermione/face/shirts/fingering_03.png" xpos h_xpos ypos h_ypos
-            elif whoring >= 15 and whoring <= 20:
+            elif 15 <= whoring <= 20:
                 if not fingering:
                     add im.Alpha("characters/hermione/face/shirts/shirt_03.png", transparency) xpos h_xpos ypos h_ypos #The shirts.
                 else:  
@@ -751,17 +751,17 @@ screen h_head: #Screen that shows a full sprite of HERMIONE.
                     add im.Alpha("characters/hermione/face/shirts/shirt_00.png", transparency) xpos h_xpos ypos h_ypos #The shirts.
                 else:  
                     add "characters/hermione/face/shirts/fingering_01.png" xpos h_xpos ypos h_ypos
-            elif whoring >= 4 and whoring <= 7:
+            elif 4 <= whoring <= 7:
                 if not fingering:
                     add im.Alpha("characters/hermione/face/shirts/shirt_01.png", transparency) xpos h_xpos ypos h_ypos #The shirts.
                 else:  
                     add "characters/hermione/face/shirts/fingering_02.png" xpos h_xpos ypos h_ypos
-            elif whoring >= 8 and whoring <= 14:
+            elif 8 <= whoring <= 14:
                 if not fingering:
                     add im.Alpha("characters/hermione/face/shirts/shirt_02.png", transparency) xpos h_xpos ypos h_ypos #The shirts.
                 else:  
                     add "characters/hermione/face/shirts/fingering_03.png" xpos h_xpos ypos h_ypos
-            elif whoring >= 15 and whoring <= 20:
+            elif 15 <= whoring <= 20:
                 if not fingering:
                     add im.Alpha("characters/hermione/face/shirts/shirt_03.png", transparency) xpos h_xpos ypos h_ypos #The shirts.
                 else:  
@@ -943,9 +943,9 @@ screen h_head2: #Screen that shows Hermione's head.
         else:
             if whoring <= 5:
                 add im.Alpha("characters/hermione/face/legs/legs_01.png", transparency) xpos her_head_xpos ypos her_head_ypos
-            if whoring >= 6 and whoring <= 11: #Mini skirt.
+            if 6 <= whoring <= 11: #Mini skirt.
                 add im.Alpha("characters/hermione/face/legs/legs_02.png", transparency) xpos her_head_xpos ypos her_head_ypos
-            if whoring >= 12 and whoring <= 19: #Micro skirt.
+            if 12 <= whoring <= 19: #Micro skirt.
                 add im.Alpha("characters/hermione/face/legs/legs_03.png", transparency) xpos her_head_xpos ypos her_head_ypos
             if whoring >= 20: #Mini Micro skirt.
                 add im.Alpha("characters/hermione/face/legs/legs_04.png", transparency) xpos her_head_xpos ypos her_head_ypos
@@ -1014,17 +1014,17 @@ screen h_head2: #Screen that shows Hermione's head.
                     add im.Alpha("characters/hermione/face/shirts/shirt_00.png", transparency) xpos her_head_xpos ypos her_head_ypos #The shirts.
                 else:  
                     add "characters/hermione/face/shirts/fingering_01.png" xpos her_head_xpos ypos her_head_ypos
-            elif whoring >= 4 and whoring <= 7:
+            elif 4 <= whoring <= 7:
                 if not fingering:
                     add im.Alpha("characters/hermione/face/shirts/shirt_01.png", transparency) xpos her_head_xpos ypos her_head_ypos #The shirts.
                 else:  
                     add "characters/hermione/face/shirts/fingering_02.png" xpos her_head_xpos ypos her_head_ypos
-            elif whoring >= 8 and whoring <= 14:
+            elif 8 <= whoring <= 14:
                 if not fingering:
                     add im.Alpha("characters/hermione/face/shirts/shirt_02.png", transparency) xpos her_head_xpos ypos her_head_ypos #The shirts.
                 else:  
                     add "characters/hermione/face/shirts/fingering_03.png" xpos her_head_xpos ypos her_head_ypos
-            elif whoring >= 15 and whoring <= 20:
+            elif 15 <= whoring <= 20:
                 if not fingering:
                     add im.Alpha("characters/hermione/face/shirts/shirt_03.png", transparency) xpos her_head_xpos ypos her_head_ypos #The shirts.
                 else:  

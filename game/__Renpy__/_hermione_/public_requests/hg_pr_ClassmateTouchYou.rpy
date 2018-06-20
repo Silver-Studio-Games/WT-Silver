@@ -81,7 +81,7 @@ label hg_pr_ClassmateTouchYou:
             m "Will you do it?"
             call her_main("I don't know... Maybe...","disgust","glance") 
 
-        elif whoring >= 9 and whoring <= 11: # LEVEL 04
+        elif 9 <= whoring <= 11: # LEVEL 04
             m "[hermione_name], I need you to go out there, and make one of your classmates molest you a little."
             call her_main("I understand, [genie_name]...","base","base",xpos="right",ypos="base") 
             m "Off you go then."
@@ -205,7 +205,7 @@ label hg_pr_ClassmateTouchYou_complete:
                     call her_main("Thank you [genie_name]...","clench","worried",cheeks="blush",tears="soft") 
                     m "And the rest of your payment..."
             
-            elif whoring >= 9 and whoring <= 11: # LEVEL 04
+            elif 9 <= whoring <= 11: # LEVEL 04
                     
                 #Event A
                 if one_out_of_three == 1:

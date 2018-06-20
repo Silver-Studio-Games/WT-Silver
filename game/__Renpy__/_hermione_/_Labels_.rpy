@@ -510,7 +510,7 @@ label screams_of_rapings:
     
     call her_walk("mid","door",2) 
 
-    if whoring >= 3 and whoring <= 5: #First level. Not happy.
+    if 3 <= whoring <= 5: #First level. Not happy.
         call her_head("...........................","disgust","down_raised",cheeks="blush") 
         
         

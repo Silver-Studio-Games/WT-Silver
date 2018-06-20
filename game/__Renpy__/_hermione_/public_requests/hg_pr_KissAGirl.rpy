@@ -197,7 +197,7 @@ label hg_pr_KissAGirl_complete:
                     jump could_not_flirt #Sent here when choose "Favor failed! No points for you!" (Hermione is leaving without getting any points).
                          
     
-    elif whoring >= 15 and whoring <= 17: # LEVEL 06. Event level 02. 
+    elif 15 <= whoring <= 17: # LEVEL 06. Event level 02. 
         
         #Event A    
         if one_out_of_three == 1:

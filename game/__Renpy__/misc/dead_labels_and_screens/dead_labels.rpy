@@ -59,7 +59,7 @@ label equip_gryyf_stockings:
             g9 "(We'll see)"
             $ request_gryyf_stockings = True
     
-        elif whoring >= 3 and whoring <= 6:
+        elif 3 <= whoring <= 6:
     
             $ hermione_wear_skirt = True
             $ hermione_wear_top = True

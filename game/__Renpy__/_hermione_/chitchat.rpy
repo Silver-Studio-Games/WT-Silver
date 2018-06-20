@@ -7,7 +7,7 @@ label chit_chat:
     
     
     ### WHORING LEVEL 01 ###
-    if whoring >= 0 and whoring <= 2:
+    if 0 <= whoring <= 2:
         if one_of_ten == 1:
             call her_main("Maybe, if I'd work harder, I could squeeze a few more classes into my schedule...","open","angryCl") 
             call her_main("","normal","base") 
@@ -59,7 +59,7 @@ label chit_chat:
 
 
     ### WHORING LEVEL 02 ###
-    if whoring >= 3 and whoring <= 5:
+    if 3 <= whoring <= 5:
         if one_of_ten == 1:
             call her_main("I read somewhere that a full moon often makes it easier to concentrate at a task at hand...","open","angryCl") 
             call her_main("","normal","base") 
@@ -112,7 +112,7 @@ label chit_chat:
 
 
     ### WHORING LEVEL 03 ###
-    if whoring >= 6 and whoring <= 8:
+    if 6 <= whoring <= 8:
         if one_of_ten == 1:
             call her_main("Do you remember when you asked me to show you my panties for the first time sir?","open","angryCl") 
             her "I was so furious with you then..."
@@ -167,7 +167,7 @@ label chit_chat:
         
 
     ### WHORING LEVEL 04 ###
-    if whoring >= 9 and whoring <= 11:
+    if 9 <= whoring <= 11:
         if one_of_ten == 1:
             call her_main("My \"men's rights movement\" has been losing its popularity lately...","open","worried") 
             call her_main("It's as if people don't even care!","annoyed","angryL") 
@@ -220,7 +220,7 @@ label chit_chat:
         
 
     ### WHORING LEVEL 05 ###
-    if whoring >= 12 and whoring <= 14:
+    if 12 <= whoring <= 14:
         if one_of_ten == 1:
             call her_main("Sir, with all due respect...","normal","frown") 
             her "Professor Snape's debauchery is getting out of hand!"
@@ -268,7 +268,7 @@ label chit_chat:
     
     
     ### WHORING LEVEL 06 ###
-    if whoring >= 15 and whoring <= 17:
+    if 15 <= whoring <= 17:
         if one_of_ten == 1:
             call her_main("Would you like me to show you my breasts today, sir?","open","down") 
             call her_main("Yes... I would willingly expose myself to you, professor...","base","ahegao_raised") 
@@ -327,7 +327,7 @@ label chit_chat:
   
   
     ### WHORING LEVEL 07 ###
-    if whoring >= 18 and whoring <= 20:
+    if 18 <= whoring <= 20:
         if one_of_ten == 1:
             call her_main("Just let me know what will be required of me today, sir.","open","angryCl") 
             call her_main("","normal","base") 

@@ -370,7 +370,7 @@ label rummaging:
         jump rum_rewards 
 
 label rum_rewards:
-        if whoring >= 0 and whoring <= 5: # Lv 1-2.
+        if 0 <= whoring <= 5: # Lv 1-2.
             if one_of_tw == 20:
                 call rum_block(PlushOwl) 
             elif one_of_tw == 1 or one_of_tw == 2:
@@ -386,7 +386,7 @@ label rum_rewards:
         
         
         ### EVENT LEVEL 02 ###  ### ###  ### ###  ###  ###  ### ###  ### ###  ### ###  ### ###  ### ###  ### ###  ### ###  ### ###  ### ###  ### ###  ### ###  ### ###  ### ###  ### ###  ###
-        if whoring >= 6 and whoring <= 11: # Lv 3-4. 
+        if 6 <= whoring <= 11: # Lv 3-4. 
             if one_of_tw == 20:
                 call rum_block(PornMagazines) 
             elif one_of_tw == 1 or one_of_tw ==2:
@@ -404,7 +404,7 @@ label rum_rewards:
         
         
         ### EVENT LEVEL 03 ###  ### ###  ### ###  ###  ###  ### ###  ### ###  ### ###  ### ###  ### ###  ### ###  ### ###  ### ###  ### ###  ### ###  ### ###  ### ###  ### ###  ### ###  ###
-        if whoring >= 12 and whoring <= 17: # Lv 5-6.
+        if 12 <= whoring <= 17: # Lv 5-6.
             if one_of_tw == 20:
                 call rum_block(Vibrator) 
             elif one_of_tw >= 1 and one_of_tw <= 4:

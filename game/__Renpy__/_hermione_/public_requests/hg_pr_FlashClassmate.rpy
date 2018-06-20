@@ -464,10 +464,10 @@ label hg_pr_FlashClassmate_complete:
     pause.3
     
     show screen blktone
-    if one_out_of_three == 2 and whoring >= 12 and whoring <= 14: #Event level 02.
+    if one_out_of_three == 2 and 12 <= whoring <= 14: #Event level 02.
         call her_head("\"Slytherin\"...","upset","closed",xpos="base",ypos="base") 
 
-    if one_out_of_three == 3 and whoring >= 12 and whoring <= 14: #Event level 02.
+    if one_out_of_three == 3 and 12 <= whoring <= 14: #Event level 02.
         call her_head("(I can't believe I did that today...)","upset","closed",xpos="base",ypos="base") 
         call her_head("(What if Harry or Ron saw me like that?)","angry","wide") 
         call her_head("(Standing there...)") 

@@ -537,7 +537,7 @@ label hg_pf_ShowThemToMe: #LV.3 (Whoring = 6 - 8)
         "\"Start jerking off.\"":
 
             #First Time Event.
-            if whoring >= 6 and whoring <= 8:
+            if 6 <= whoring <= 8:
                 $ mad += 2
                 hide screen hermione_main
                 with d3

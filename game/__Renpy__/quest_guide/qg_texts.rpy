@@ -339,7 +339,7 @@ label update_tip_of_the_day:
 
         #whoring specific gifts
         if rndm_one_of_ten >= 6 and rndm_one_of_ten <= 10:
-            if whoring >= 0 and whoring <= 5:  #lvl 1-2    
+            if 0 <= whoring <= 5:  #lvl 1-2    
                 $ rndm_one_of_three = renpy.random.randint(1, 3)
                 if rndm_one_of_three == 1:
                     $ guide_add_tip = True                                          #Max Characters
@@ -357,7 +357,7 @@ label update_tip_of_the_day:
                     $ guide_tip_text2 = "Maybe she'd like a gift?"
                     $ guide_tip_text3 = "Just... don't buy her a sex-doll!"
 
-            if whoring >= 6 and whoring <= 11: #lvl 3-4
+            if 6 <= whoring <= 11: #lvl 3-4
                 $ rndm_one_of_three = renpy.random.randint(1, 3)
                 if rndm_one_of_three == 1:
                     $ guide_add_tip = True                                          #Max Characters
@@ -374,7 +374,7 @@ label update_tip_of_the_day:
                     $ guide_tip_text2 = "but maybe you can get her interested in"
                     $ guide_tip_text3 = "the ones specific for girls!"
 
-            if whoring >= 12 and whoring <= 17: #lvl 5-6
+            if 12 <= whoring <= 17: #lvl 5-6
                 $ rndm_one_of_three = renpy.random.randint(1, 3)
                 if rndm_one_of_three == 1:
                     $ guide_add_tip = True
@@ -390,7 +390,7 @@ label update_tip_of_the_day:
                     $ guide_tip_text = "One might think Hermione has grown"
                     $ guide_tip_text2 = "interested in sex-toys by now!"
 
-            if whoring >= 18 and whoring <= 23: #7
+            if 18 <= whoring <= 23: #7
                 $ rndm_one_of_three = renpy.random.randint(1, 3)
                 if rndm_one_of_three == 1:
                     $ guide_add_tip = False #False=Fact
