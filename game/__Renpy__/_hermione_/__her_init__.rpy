@@ -702,6 +702,7 @@ label her_progress_init:
     
         #Public Shaming Flags
         $ hg_ps_PantyThief_SoakedPantiesFlag = False
+        $ hg_ps_PantyThief_SoakedAgain = False
 
         $ transparent_quest = False
 

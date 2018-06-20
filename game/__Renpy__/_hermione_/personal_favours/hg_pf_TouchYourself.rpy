@@ -1,7 +1,3 @@
-
-
-### Hermione Masturbates ###
-
 label hg_pf_TouchYourself: #LV.4 (Whoring = 8 - 10)
     hide screen hermione_main 
     with d3
@@ -19,108 +15,140 @@ label hg_pf_TouchYourself: #LV.4 (Whoring = 8 - 10)
     
     $ current_payout = 40 #Used when haggling about price of the favor.
     
-    #First time event.
-    if hg_pf_TouchYourself_OBJ.points == 0:
-        m "[hermione_name]..."
-        call her_main("Yes, [genie_name]?","base","base") 
-        m "Do you ever touch yourself?"
-        if whoring < 8:
-            jump too_much
+    if hg_pf_TouchYourself_OBJ.points > 2:
+
+        #First time event.
+        if hg_pf_TouchYourself_OBJ.points == 0:
+            m "[hermione_name]..."
+            call her_main("Yes, [genie_name]?","base","base") 
+            m "Do you ever touch yourself?"
+            if whoring < 8:
+                jump too_much
+                
+            $ hg_pf_TouchYourself_OBJ.hearts_level = 1
             
-        $ hg_pf_TouchYourself_OBJ.hearts_level = 1
-        
-        call her_main("What? why?","upset","wink") 
-        m "Do you?"
-        call her_main("[genie_name]!","scream","worriedCl") 
-        m "It's a simple question [hermione_name]..."
-        call her_main("......","normal","worriedCl") 
-        call her_main("{size=-5}I do...{/size}","angry","worriedCl",emote="05") 
-        m "Huh? What was that?"
-        call her_main("I said that I do alright!!!","scream","worriedCl") 
-        m "Hmmmm, I'm not sure I believe you..."
-        call her_main("What? why would I lie?","annoyed","worriedL") 
-        m "I'm not sure..."
-        m "But don't worry, I'm sure a quick little demonstration will erase any doubts..."
-        call her_main("...{p}And how much will this demonstration earn me?","annoyed","suspicious") 
-        
-        menu:
-            "\"You will get 20 house points.\"":
-                $ current_payout = 20
-                call her_main("......","annoyed","angryL") 
-                call her_main("well I suppose I could.","open","down") 
-                call her_main("But you better keep your hands to yourself...","open","down") 
-                m "Witcher's promise."
-                call her_main("...","annoyed","suspicious") 
-            "\"you will get 40 house points.\"":
-                $ current_payout = 40
-                call her_main(".....","base","base") 
-                call her_main("40 house points...?","soft","baseL") 
-                her "That could put \"Gryffindor\" back on top..."
-                m "so Is that a \"yes\"?"
-                call her_main("Yes, it is, [genie_name].","base","squint") 
-                m "fantastic!"
-            "\"you will get 80 house points!\"":
-                call play_music("chipper_doodle") # HERMIONE'S THEME.
-                $ current_payout = 80 #Used when haggling about price of th favor.
-                $ mad = 0
-                call her_main("80 house points?!","scream","wide_stare") 
-                m "Is that enough?"
-                call her_main("Of course [genie_name]!","smile","happyCl") 
-                call her_main("If it's 80 points for Gryffindor then I don't mind giving you a little... show.","smile","happyCl",emote="06") 
-       
-        call play_music("playful_tension") # SEX THEME.
-        call her_main("...........","upset","wink",xpos="mid",ypos="base",trans="fade") 
-        call her_main("Do you want me to... start?","upset","wink") 
-        m "Maybe take off your top first..."
-        call her_main("...","angry","worriedCl",emote="05") 
-        call her_main("You want me to strip for you as well as...","angry","worriedCl",emote="05") 
-        m "There's an extra 10 points for \"gryffindor\" in it for you."
-        $ current_payout += 10
-        call her_main("alright... {p}but I'm leaving my skirt on...","upset","wink") 
-        hide screen bld1
-        with d3
-        
-        call set_hermione_action("lift_top") 
-        pause.5
-        
-        $ hermione_wear_top = False
-        $ hermione_wear_bra = False
-        call set_hermione_action("none","skip_update") 
-        pause.5
-        
-        call her_main("...........","upset","wink") 
-        m "Mmmm, that's it, [hermione_name]..."
-        
-        call her_main("(I can't believe I'm going to do this...)","normal","worriedCl") 
-        
-        
-        call set_hermione_action("covering_top") 
-        call ctc 
-        
-        call play_music("playful_tension") # SEX THEME.
-        call nar(">Hermione slowly starts grinding her mound against her hand.") 
-        g9 "Nice..."
-        call her_main("........","upset","wink") 
-        m "............."
-        call her_main(".............","normal","worriedCl") 
-        call her_main("umm... [genie_name]?") 
-        m "Yes, what is it?"
-        call her_main("How long do I have to keep doing this?","open","base") 
-        m "Until you finish [hermione_name]..."
-        
-        if daytime:
-            call her_main("What? my classes are about to start [genie_name]...","upset","wink") 
-        else: 
-            call her_main("What? it's getting pretty late [genie_name]...","upset","wink") 
+            call her_main("What? why?","upset","wink") 
+            m "Do you?"
+            call her_main("[genie_name]!","scream","worriedCl") 
+            m "It's a simple question [hermione_name]..."
+            call her_main("......","normal","worriedCl") 
+            call her_main("{size=-5}I do...{/size}","angry","worriedCl",emote="05") 
+            m "Huh? What was that?"
+            call her_main("I said that I do alright!!!","scream","worriedCl") 
+            m "Hmmmm, I'm not sure I believe you..."
+            call her_main("What? why would I lie?","annoyed","worriedL") 
+            m "I'm not sure..."
+            m "But don't worry, I'm sure a quick little demonstration will erase any doubts..."
+            call her_main("...{p}And how much will this demonstration earn me?","annoyed","suspicious") 
             
-        call her_main("I'm not sure if I'll be able to finish... in time.","upset","wink") 
-        m "Do you need the points or not?"
-        call her_main("I do, [genie_name]! I'm sorry...","open","down") 
-        call her_main("I'll just keep ...going...","disgust","down_raised") 
-        m "(Hmmm, I might have to give her a little encouragement.)"
+            menu:
+                "\"You will get 20 house points.\"":
+                    $ current_payout = 20
+                    call her_main("......","annoyed","angryL") 
+                    call her_main("well I suppose I could.","open","down") 
+                    call her_main("But you better keep your hands to yourself...","open","down") 
+                    m "Witcher's promise."
+                    call her_main("...","annoyed","suspicious") 
+                "\"you will get 40 house points.\"":
+                    $ current_payout = 40
+                    call her_main(".....","base","base") 
+                    call her_main("40 house points...?","soft","baseL") 
+                    her "That could put \"Gryffindor\" back on top..."
+                    m "so Is that a \"yes\"?"
+                    call her_main("Yes, it is, [genie_name].","base","squint") 
+                    m "fantastic!"
+                "\"you will get 80 house points!\"":
+                    call play_music("chipper_doodle") # HERMIONE'S THEME.
+                    $ current_payout = 80 #Used when haggling about price of th favor.
+                    $ mad = 0
+                    call her_main("80 house points?!","scream","wide_stare") 
+                    m "Is that enough?"
+                    call her_main("Of course [genie_name]!","smile","happyCl") 
+                    call her_main("If it's 80 points for Gryffindor then I don't mind giving you a little... show.","smile","happyCl",emote="06") 
+           
+            call play_music("playful_tension") # SEX THEME.
+            call her_main("...........","upset","wink",xpos="mid",ypos="base",trans="fade") 
+            call her_main("Do you want me to... start?","upset","wink") 
+            m "Maybe take off your top first..."
+            call her_main("...","angry","worriedCl",emote="05") 
+            call her_main("You want me to strip for you as well as...","angry","worriedCl",emote="05") 
+            m "There's an extra 10 points for \"gryffindor\" in it for you."
+            $ current_payout += 10
+            call her_main("alright... {p}but I'm leaving my skirt on...","upset","wink") 
+            hide screen bld1
+            with d3
+            
+            call set_hermione_action("lift_top") 
+            pause.5
+            
+            $ hermione_wear_top = False
+            $ hermione_wear_bra = False
+            call set_hermione_action("none","skip_update") 
+            pause.5
+            
+            call her_main("...........","upset","wink") 
+            m "Mmmm, that's it, [hermione_name]..."
+            
+            call her_main("(I can't believe I'm going to do this...)","normal","worriedCl") 
+            
+            
+            call set_hermione_action("covering_top") 
+            call ctc 
+            
+            call play_music("playful_tension") # SEX THEME.
+            call nar(">Hermione slowly starts grinding her mound against her hand.") 
+            g9 "Nice..."
+            call her_main("........","upset","wink") 
+            m "............."
+            call her_main(".............","normal","worriedCl") 
+            call her_main("umm... [genie_name]?") 
+            m "Yes, what is it?"
+            call her_main("How long do I have to keep doing this?","open","base") 
+            m "Until you finish [hermione_name]..."
+            
+            if daytime:
+                call her_main("What? my classes are about to start [genie_name]...","upset","wink") 
+            else: 
+                call her_main("What? it's getting pretty late [genie_name]...","upset","wink") 
+                
+            call her_main("I'm not sure if I'll be able to finish... in time.","upset","wink") 
+            m "Do you need the points or not?"
+            call her_main("I do, [genie_name]! I'm sorry...","open","down") 
+            call her_main("I'll just keep ...going...","disgust","down_raised") 
+            m "(Hmmm, I might have to give her a little encouragement.)"
+
+        #Second time event.
+        elif hg_pf_TouchYourself_OBJ.points == 1: # SECOND EVENT
+            m "[hermione_name]..."
+            call her_main("Yes, [genie_name]?","base","base") 
+            m "Are you feeling horny?"
+            call her_main("maybe A little, [genie_name].","base","glance") 
+            m "Ah, well perhaps we can fix that..."
+            call her_main("[genie_name]...","open","worriedCl") 
+            m "[hermione_name], I would like to buy yet another favour from you today."
+            call her_main("Of course, [genie_name].","base","down") 
+            g9 "The favour being you playing with that slutty little pussy of yours!"
+            call her_main("{image=textheart}{image=textheart}{image=textheart}","grin","ahegao") 
+            call her_main(".............","soft","ahegao") 
+            call her_main("Alright...","base","down") 
+            
+            call her_main("","base","glance",xpos="mid",ypos="base",trans="fade") 
+            call set_hermione_action("lift_top") 
+            pause.5
+            
+            call her_main("...........","upset","wink") 
+            m "Mmmm, that's it [hermione_name]..."
+            
+            call her_main("(I can't believe I'm going to do this... again...)","angry","down_raised") 
+            call set_hermione_action("covering_top") 
+            call ctc 
+            
+            call play_music("playful_tension") # SEX THEME.
+            call nar(">Hermione slowly starts grinding her mound against her hand.") 
+            g9 "Nice..."
+            call her_main("........","grin","ahegao") 
         
         #MAIN FAVOUR MENU
-        label TouchYourself_menu:
         menu:
             m "..."
             "\"That's it slut, keep going.\"":
@@ -261,8 +289,8 @@ label hg_pf_TouchYourself: #LV.4 (Whoring = 8 - 10)
                 
                 call her_main("Mmmm...{image=textheart}","scream","worriedCl",cheeks="blush") 
 
-
-        if hg_pf_TouchYourself_OBJ.points == 0: #HERMIONE DOESN'T CUM
+        #HERMIONE DOESN'T CUM
+        if hg_pf_TouchYourself_OBJ.points == 0: 
                 call her_main("Ah...","shock","baseL",cheeks="blush",tears="soft") 
                 m "almost there [hermione_name]?"
                 call her_main("a-almost...","clench","worried",cheeks="blush",tears="soft") 
@@ -296,7 +324,6 @@ label hg_pf_TouchYourself: #LV.4 (Whoring = 8 - 10)
                         call her_main("I am not going to sell you a single favour anymore, [genie_name]!","angry","angry",cheeks="blush") 
                         
                         $ mad += 15
-                        jump end_touch_yourself
                         
                     "-Forgive her-":
                         m "It's alright, [hermione_name]."
@@ -304,8 +331,9 @@ label hg_pf_TouchYourself: #LV.4 (Whoring = 8 - 10)
                         m "I'm sure you're just a little nervous."
                         call her_main("Thank you [genie_name].","clench","worried",cheeks="blush",tears="soft") 
                         call her_main("I promise to try harder next time.","scream","worriedCl",cheeks="blush",tears="messy") 
-                        
-        else: #HERMIONE CUMS
+        
+        #HERMIONE CUMS       
+        else:
             $ hg_pf_TouchYourself_OBJ.hearts_level = 2
             call her_main("A-ha... {image=textheart}ah...","open","worriedCl") 
             call her_main("Ah... {image=textheart}-aha...","open","worriedCl") 
@@ -349,41 +377,6 @@ label hg_pf_TouchYourself: #LV.4 (Whoring = 8 - 10)
             call her_main("Yes, [genie_name]... I just need a little longer...","shock","baseL",cheeks="blush",tears="soft") 
             m "take your time."
             call her_main("ah... {image=textheart}","silly","worried",cheeks="blush",tears="soft") 
-
-    #Second time event.
-    elif hg_pf_TouchYourself_OBJ.points == 1: # SECOND EVENT
-        m "[hermione_name]..."
-        call her_main("Yes, [genie_name]?","base","base") 
-        m "Are you feeling horny?"
-        call her_main("maybe A little, [genie_name].","base","glance") 
-        m "Ah, well perhaps we can fix that..."
-        call her_main("[genie_name]...","open","worriedCl") 
-        m "[hermione_name], I would like to buy yet another favour from you today."
-        call her_main("Of course, [genie_name].","base","down") 
-        g9 "The favour being you playing with that slutty little pussy of yours!"
-        call her_main("{image=textheart}{image=textheart}{image=textheart}","grin","ahegao") 
-        call her_main(".............","soft","ahegao") 
-        call her_main("Alright...","base","down") 
-        
-        call her_main("","base","glance",xpos="mid",ypos="base",trans="fade") 
-        call set_hermione_action("lift_top") 
-        pause.5
-        
-        call her_main("...........","upset","wink") 
-        m "Mmmm, that's it [hermione_name]..."
-        
-        call her_main("(I can't believe I'm going to do this... again...)","angry","down_raised") 
-        call set_hermione_action("covering_top") 
-        call ctc 
-        
-        call play_music("playful_tension") # SEX THEME.
-        call nar(">Hermione slowly starts grinding her mound against her hand.") 
-        g9 "Nice..."
-        call her_main("........","grin","ahegao") 
-        
-
-        jump TouchYourself_menu
-
 
     #Third time event.
     elif hg_pf_TouchYourself_OBJ.points >= 2:
@@ -627,7 +620,6 @@ label hg_pf_TouchYourself: #LV.4 (Whoring = 8 - 10)
                 call nar(">with your other hand, you start rubbing the base of your palm against her clit.") 
                 call her_main("{size=+10}!!!{/size}","open","ahegao_raised",cheeks="blush") 
 
-
         call nar(">you don't even need to move as she pounds herself against your fingers.") 
         call her_main("ah...{image=textheart} please...{image=textheart} keep...{image=textheart}","silly","dead","blush") 
         call her_main("fingering my cunt!{image=textheart}{image=textheart}","silly","ahegao","blush") 
@@ -656,8 +648,7 @@ label hg_pf_TouchYourself: #LV.4 (Whoring = 8 - 10)
         call nar(">You release her...") 
         $ g_c_u_pic = "images/animation/grope_e_01.png"
         m "This will do for now [hermione_name]."
-    
-    
+        
     label end_touch_yourself:
     hide screen hermione_main
     call blkfade 
@@ -683,10 +674,10 @@ label hg_pf_TouchYourself: #LV.4 (Whoring = 8 - 10)
     call hide_blkfade 
     pause.5
 
-    if whoring < 19:
+    if whoring <= 18:
         call her_main("Now about my payment.","scream","surprised",cheeks="blush",tears="messy",xpos="right",ypos="base") 
         m "Yes, yes, [hermione_name]. [current_payout] to \"Gryffindor\"." 
-        $ gryffindor +=current_payout
+        $ gryffindor += current_payout
 
     call her_main("Thank you, [genie_name]...","soft","baseL",xpos="right",ypos="base") 
     
@@ -696,17 +687,10 @@ label hg_pf_TouchYourself: #LV.4 (Whoring = 8 - 10)
     $ hg_pf_TouchYourself_OBJ.points += 1
     
     if hg_pf_TouchYourself_OBJ.points == 1:
-        $ new_request_16_heart = 1
         $ hg_pf_TouchYourself_OBJ.hearts_level = 1 #Event hearts level (0-3)
     if hg_pf_TouchYourself_OBJ.points == 2:
-        $ new_request_16_heart = 2
         $ hg_pf_TouchYourself_OBJ.hearts_level = 2 #Event hearts level (0-3)
     if hg_pf_TouchYourself_OBJ.points == 3:
-        $ new_request_16_heart = 3
         $ hg_pf_TouchYourself_OBJ.hearts_level = 3 #Event hearts level (0-3)
-    
-    
+        
     jump end_hg_pf  #Resets screens. Hermione walks out. Resets Hermione.
-    
-    
-

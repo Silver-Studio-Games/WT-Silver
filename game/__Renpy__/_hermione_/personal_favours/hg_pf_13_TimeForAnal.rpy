@@ -46,7 +46,7 @@ label hg_pf_TimeForAnal: #LV.8 (Whoring = 21 - 23)
         call her_main("[genie_name]..?","annoyed","suspicious") 
         m "How familiar you are with the term \"Anal Sex\"?"
 
-        if whoring < 21:
+        if whoring <= 20:
             jump too_much
 
         call her_main("90 house points...","annoyed","annoyed") 
@@ -688,13 +688,10 @@ label hg_pf_TimeForAnal: #LV.8 (Whoring = 21 - 23)
         $ whoring +=1
 
     if hg_pf_TimeForAnal_OBJ.points == 0:
-        $ new_request_31_heart = 1
         $ hg_pf_TimeForAnal_OBJ.hearts_level = 1 #Event hearts level (0-3)
     if hg_pf_TimeForAnal_OBJ.points == 1:
-        $ new_request_31_heart = 2
         $ hg_pf_TimeForAnal_OBJ.hearts_level = 2 #Event hearts level (0-3)
     if hg_pf_TimeForAnal_OBJ.points >= 2:
-        $ new_request_31_heart = 3
         $ hg_pf_TimeForAnal_OBJ.hearts_level = 3 #Event hearts level (0-3)
     
     $ hg_pf_TimeForAnal_OBJ.points += 1
@@ -704,9 +701,3 @@ label hg_pf_TimeForAnal: #LV.8 (Whoring = 21 - 23)
     $ custom_outfit_old = temp_outfit
 
     jump end_hg_pf  #Resets screens. Hermione walks out. Resets Hermione.
-    
-
-
-
-
-

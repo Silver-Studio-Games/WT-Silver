@@ -12,8 +12,9 @@ label hg_pf_NicePanties:
     $ menu_y = 0.5 #Menu is moved to the middle.
 
     m "{size=-4}(I will ask her to show me her panties. Plain and simple.){/size}"
-    if hg_pf_NicePanties_OBJ.points < 1:
 
+    # First time event
+    if hg_pf_NicePanties_OBJ.points == 0:
         menu:
             "\"(Yes, let's do it!)\"":
                 pass
@@ -26,7 +27,7 @@ label hg_pf_NicePanties:
     m "Nothing drastic, really..."
     m "I just want you to show me your panties."  
 
-    #First Time Event.
+    # First time event
     if hg_pf_NicePanties_OBJ.points == 0 and whoring <= 5:
         call her_main("My... panties...?","open","base") 
         call her_main("[genie_name]!","angry","angry") 
@@ -77,9 +78,7 @@ label hg_pf_NicePanties:
     
 
     #Fist event.
-    if whoring >= 0 and whoring <= 2:
-
-        $ new_request_02_heart = 1 #Event hearts level (0-3)
+    if 0 <= whoring <= 2:
         $ hg_pf_NicePanties_OBJ.hearts_level = 1 #Event hearts level (0-3)
         
         pause.8
@@ -101,9 +100,7 @@ label hg_pf_NicePanties:
                 call ctc 
     
     #Second Event.
-    elif whoring >= 3 and whoring < 9:
-
-        $ new_request_02_heart = 2 #Event hearts level (0-3)
+    elif 3 <= whoring <= 9:
         $ hg_pf_NicePanties_OBJ.hearts_level = 2 #Event hearts level (0-3)
         
         pause.8
@@ -129,9 +126,7 @@ label hg_pf_NicePanties:
                 call ctc 
     
     #Third Event.
-    elif whoring >= 9:
-
-        $ new_request_02_heart = 3 #Event hearts level (0-3)
+    elif 9 <= whoring:
         $ hg_pf_NicePanties_OBJ.hearts_level = 3 #Event hearts level (0-3)
         
         call ctc 
@@ -269,7 +264,8 @@ label hg_pf_NicePanties:
             "-Let her go-":
                 m "Yes, you can go now."
 
-                if hg_pf_NicePanties_OBJ.points == 0: #First time.
+                # First time event
+                if hg_pf_NicePanties_OBJ.points == 0:
                     call her_main("Another 5 points...","soft","baseL") 
                     her "Can't wait to tell the guys!"
                     call her_main("Only that I can't actually tell them about any of this...","annoyed","angryL") 
@@ -294,9 +290,8 @@ label hg_pf_NicePanties:
 
                 if whoring <= 2:
                     $ whoring +=1
-        
-                if hg_pf_NicePanties_OBJ.points < 3:
-                    $ hg_pf_NicePanties_OBJ.points += 1
+                
+                $ hg_pf_NicePanties_OBJ.points += 1
     
                 $ menu_x = 0.5 #Menu is moved to the middle.
                 $ menu_y = 0.5 #Menu is moved to the middle.
@@ -305,7 +300,9 @@ label hg_pf_NicePanties:
 
     else:
         m "Yes, you can go now."
-        if hg_pf_NicePanties_OBJ.points == 0: #First time.
+
+        # First time event
+        if hg_pf_NicePanties_OBJ.points == 0:
             call her_main("Another 5 points...","soft","baseL") 
             her "Can't wait to tell the guys!"
             call her_main("Only that I can't actually tell them about any of this...","annoyed","angryL") 

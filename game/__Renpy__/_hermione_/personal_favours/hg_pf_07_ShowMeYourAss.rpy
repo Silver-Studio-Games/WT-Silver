@@ -12,7 +12,7 @@ label hg_pf_ShowMeYourAss: #LV.3 (Whoring = 9 - 11)
     else:
         m "{size=-4}(I feel like checking out that ass again.){/size}"
 
-    if hg_pf_ShowMeYourAss_OBJ.points < 1:
+    if hg_pf_ShowMeYourAss_OBJ.points == 0:
         menu:
             "\"(Yes, let's do it!)\"":
                 pass
@@ -21,14 +21,14 @@ label hg_pf_ShowMeYourAss: #LV.3 (Whoring = 9 - 11)
     
     $ current_payout = 50 #Used when haggling about price of th favor.
     
-    if hg_pf_ShowMeYourAss_OBJ.points == 0 and whoring < 15: # LEVEL 04 # FIRST TIME.
+    if hg_pf_ShowMeYourAss_OBJ.points == 0 and whoring <= 14: # LEVEL 04 # FIRST TIME.
         
         call bld 
         m "[hermione_name]?"
         call her_main("Yes, [genie_name]...","normal","base") 
         m "How much will it cost for you to get naked and show me that perfect ass of yours?"
         stop music fadeout 1.0
-        if whoring < 9:
+        if whoring <= 8:
             call her_main("Get naked and show you my...?","angry","shocked") 
             jump too_much
         else:
@@ -64,7 +64,7 @@ label hg_pf_ShowMeYourAss: #LV.3 (Whoring = 9 - 11)
                 call her_main("at least one hundred points","annoyed","angryL") 
 
                 menu:
-                    "\"Fine. 100 it is! strip already!":
+                    "\"Fine. 100 it is! strip already!\"":
                         $ current_payout = 100 #Used when haggling about price of th favor.
                         her "................."
                         call her_main("(I didn't think he'd agree to this...)","annoyed","worriedL") 
@@ -126,7 +126,6 @@ label hg_pf_ShowMeYourAss: #LV.3 (Whoring = 9 - 11)
 
         call hide_blkfade 
         
-
     #Second and Third Event
     else: #Whoring 12+ or whoring (9+ and .points > 1)
         
@@ -134,22 +133,36 @@ label hg_pf_ShowMeYourAss: #LV.3 (Whoring = 9 - 11)
         call her_main(xpos="right",ypos="base") 
         pause.5
         
-        if whoring < 12:
+        if whoring <= 11:
             m "[hermione_name]?"
             call her_main("Yes, [genie_name]?","annoyed","angryL") 
         m "I need to see your ass, [hermione_name]."
 
-        if whoring < 12:
-            call her_main("............","annoyed","angryL",cheeks="blush") 
-            call her_main("Do you promise not to touch, [genie_name]?","annoyed","angryL",cheeks="blush") 
-            m "Of course."
-        elif whoring < 15:
-            call her_main("Are you only going to watch, [genie_name]?","angry","worriedCl",cheeks="blush") 
-            m "Of course..."
+        if whoring <= 14:
+            if whoring <= 11:
+                call her_main("............","annoyed","angryL",cheeks="blush") 
+                call her_main("Do you promise not to touch, [genie_name]?","annoyed","angryL",cheeks="blush")
+            else:
+                call her_main("Are you only going to watch, [genie_name]?","angry","worriedCl",cheeks="blush")
+            menu:
+                "\"Of course...\"":
+                    pass
+                "(Offer more points)":
+                    m "Sure... Unless, you want to make some extra points?"
+                    her "................."
+                    call her_main("I'll need at least one hundred points","annoyed","angryL") 
+                    menu:
+                        "\"Fine. 100 it is! strip already!\"":
+                            $ current_payout = 100 #Used when haggling about price of th favor.
+                            her "................."
+                            call her_main("(I didn't think he'd agree to this...)","annoyed","worriedL") 
+                            call her_main("W-Well alright then...","normal","worriedCl")
+                        "\"No Way\"":
+                            call her_main("you better keep your hands you yourself...","annoyed","angryL") 
         else:
             call her_main("anything for you [genie_name]","base","ahegao_raised",cheeks="blush") 
+        
         call ctc 
-
 
         #Remove Top Animation
         call set_hermione_action("lift_top") 
@@ -175,7 +188,7 @@ label hg_pf_ShowMeYourAss: #LV.3 (Whoring = 9 - 11)
 
         m "Very nice..."
 
-        if whoring < 15:
+        if whoring <= 14:
             call her_main(".....","annoyed","angryL",cheeks="blush") 
         else:
             call her_main("............","soft","baseL",cheeks="blush") 
@@ -196,7 +209,7 @@ label hg_pf_ShowMeYourAss: #LV.3 (Whoring = 9 - 11)
         show screen blktone
         call hide_blkfade 
 
-        if whoring < 15:
+        if whoring <= 14:
             call her_head("....................................","annoyed","annoyed") 
         else:
             call her_head("....................................","base","closed") 
@@ -230,7 +243,7 @@ label hg_pf_ShowMeYourAss: #LV.3 (Whoring = 9 - 11)
             call ctc 
 
             #FIRST EVENT. HERMIONE OUTRAGED.
-            if whoring < 12 and current_payout < 100:
+            if whoring <= 11 and current_payout < 100:
 
                 m "Oh... This is a nice ass you've got here..."
                 call play_music("chipper_doodle") # HERMIONE'S THEME.
@@ -268,7 +281,7 @@ label hg_pf_ShowMeYourAss: #LV.3 (Whoring = 9 - 11)
                 $ mad += 7
 
             #SECOND EVENT. A BIT ANGRY.
-            elif whoring < 15:
+            elif whoring <= 14:
 
                 if current_payout < 100:
                     $ mad += 3
@@ -324,7 +337,7 @@ label hg_pf_ShowMeYourAss: #LV.3 (Whoring = 9 - 11)
                 m "Sure..."
 
             #THIRD EVENT. ENJOYS A LITTLE.
-            elif whoring >= 15:
+            elif 15 <= whoring:
 
                 call her_head("But...","disgust","down_raised",cheeks="blush") 
                 call her_head("ah...{image=textheart}","shock","worriedCl") 
@@ -336,24 +349,24 @@ label hg_pf_ShowMeYourAss: #LV.3 (Whoring = 9 - 11)
 
                 m "But you like it, don't you?"
 
-                if whoring >= 18:
-                    call her_head("I love it [genie_name]!{image=textheart}","open","baseL",cheeks="blush") 
+                if whoring <= 17:
+                    call her_head("maybe... [genie_name]{image=textheart}","shock","worriedCl")
                 else:
-                    call her_head("maybe... [genie_name]{image=textheart}","shock","worriedCl") 
+                    call her_head("I love it [genie_name]!{image=textheart}","open","baseL",cheeks="blush")
 
                 call nar(">You give her cheeks a couple of firm squeezes...") 
                 
-                if whoring >= 18 or current_payout == 100:
-                    if current_payout < 100:
-                        call her_head("[genie_name], you promised not to touch...","base","baseL",cheeks="blush") 
+                if current_payout < 100:
+                    if whoring <= 17:
+                        call her_head("[genie_name], you promised not to touch...","angry","worriedCl",cheeks="blush")
                         m "I know, I know... but admit it, you wanted me to..."
-                        call her_head(".................{image=textheart}{image=textheart}{image=textheart}","base","ahegao_raised",cheeks="blush") 
+                        call her_head("ah{image=textheart}... of course not [genie_name]{image=textheart}","angry","angry",cheeks="blush")
                     else:
-                        call her_head("[genie_name], please...{image=textheart}","base","baseL",cheeks="blush") 
+                        call her_head("[genie_name], you promised not to touch...","base","baseL",cheeks="blush")
+                        m "I know, I know... but admit it, you wanted me to..."
+                        call her_head(".................{image=textheart}{image=textheart}{image=textheart}","base","ahegao_raised",cheeks="blush")
                 else:
-                    call her_head("[genie_name], you promised not to touch...","angry","worriedCl",cheeks="blush") 
-                    m "I know, I know... but admit it, you wanted me to..."
-                    call her_head("ah{image=textheart}... of course not [genie_name]{image=textheart}","angry","angry",cheeks="blush") 
+                    call her_head("[genie_name], please...{image=textheart}","base","baseL",cheeks="blush")
 
                 call her_head("mmmm.......................{image=textheart}","base","ahegao_raised",cheeks="blush") 
                 call her_head("[genie_name], you need to stop now...","base","ahegao_raised",cheeks="blush") 
@@ -386,11 +399,11 @@ label hg_pf_ShowMeYourAss: #LV.3 (Whoring = 9 - 11)
                 call play_music("chipper_doodle") # HERMIONE'S THEME.
 
                 if current_payout < 100:
-                    if whoring >= 18:
+                    if whoring <= 17:
+                        call her_head("Please don't think I forgot that you broke your promise, [genie_name].","annoyed","angryL",cheeks="blush")
+                    else:
                         call her_head("Please don't think I forgot that you broke your promise, [genie_name].","base","baseL",cheeks="blush") 
                         call her_head("I expect you to make it up to me later...","base","baseL",cheeks="blush") 
-                    else:
-                        call her_head("Please don't think I forgot that you broke your promise, [genie_name].","annoyed","angryL",cheeks="blush") 
                     m "Right..."
                 
             call ctc 
@@ -404,8 +417,7 @@ label hg_pf_ShowMeYourAss: #LV.3 (Whoring = 9 - 11)
             call ctc 
 
             #First Event
-            if whoring >= 9 and whoring < 15:
-
+            if 9 <= whoring <= 14:
                 menu:
                     "-\"You have a fantastic ass girl\"-":
                         m "you should start wearing shorter skirts to show it off a little..."
@@ -416,8 +428,7 @@ label hg_pf_ShowMeYourAss: #LV.3 (Whoring = 9 - 11)
                         $ mad +=3
 
             #Second Event
-            elif whoring >= 15 and whoring < 18:
-                
+            elif 15 <= whoring <= 17:
                 menu:
                     "\"Nice little ass you got there.\"":
                         call her_head("","annoyed","closed") 
@@ -432,8 +443,7 @@ label hg_pf_ShowMeYourAss: #LV.3 (Whoring = 9 - 11)
                         her "well in that case Are we done?"
 
             #Third Event
-            elif whoring >= 18:
-                
+            elif 18 <= whoring:
                 menu:
                     "\"You have an amazing ass, [hermione_name].\"":
                         call her_head("You really think so [genie_name]?","annoyed","base") 
@@ -443,13 +453,12 @@ label hg_pf_ShowMeYourAss: #LV.3 (Whoring = 9 - 11)
                         call her_head("Does this mean you don't like it, [genie_name]?","annoyed","base") 
                         call her_head("I'm sorry... I'll try to work out some more.","disgust","down_raised") 
 
-
             call nar(">You stare at her ass for a while longer...") 
             call ctc 
 
             m "Alright, you can get dressed now [hermione_name]..."
 
-            if whoring < 15 or mad > 1:
+            if whoring <= 14 or mad > 1:
                 call her_head(".............","annoyed","base") 
             else:
                 call her_head(".............","base","closed") 
@@ -480,7 +489,7 @@ label hg_pf_ShowMeYourAss: #LV.3 (Whoring = 9 - 11)
             call ctc 
 
             #First Event.
-            if whoring >= 9 and whoring < 15:
+            if 9 <= whoring <= 14:
                 $ mad += 2
 
                 show screen blktone
@@ -523,8 +532,7 @@ label hg_pf_ShowMeYourAss: #LV.3 (Whoring = 9 - 11)
                         call her_head("while you cum all over me!","angry","suspicious",cheeks="blush") 
 
             #Second Event.
-            elif whoring >= 15 and whoring < 18:
-
+            elif 15 <= whoring <= 17:
                 show screen blktone
                 show screen hermione_ass
                 call her_head("Are you enjoying the view [genie_name]","angry","wide") 
@@ -556,33 +564,13 @@ label hg_pf_ShowMeYourAss: #LV.3 (Whoring = 9 - 11)
                 call nar(">You are about to cum...") 
 
             #Third Event.
-            elif whoring >= 18:
+            elif 18 <= whoring:
 
                 show screen blktone
                 show screen hermione_ass
                 call her_head("[genie_name]?","base","ahegao_raised",cheeks="blush") 
 
-                if whoring >= 21:
-                    call her_head("ah...","base","ahegao_raised",cheeks="blush") 
-                    call nar(">Hermione looks back and sees you stroking your cock.") 
-                    call her_head("It's so big...","open","baseL",cheeks="blush") 
-                    call her_head("You just couldn't help yourself, could you [genie_name]?","base","baseL",cheeks="blush") 
-                    call her_head("..................","base","ahegao_raised",cheeks="blush") 
-                    m "Yes... Yes, like that..."
-                    m "Yes, shake that ass [hermione_name]..."
-                    call her_head("..............","base","ahegao_raised",cheeks="blush") 
-                    call her_head("well, so be it...","open","baseL",cheeks="blush") 
-                    call her_head("But you must promise me not to...","soft","baseL",cheeks="blush") 
-                    call her_head("Not to... ehm...","open","baseL",cheeks="blush") 
-                    call her_head("Not to cum... on me, [genie_name]...","base","ahegao_raised",cheeks="blush") 
-                    m "Fine, whatever..."
-                    m "Oh, you little slut. You nasty little slut!"
-                    call her_head(".......................","base","ahegao_raised",cheeks="blush") 
-                    ">You start to stroke your cock even harder..."
-                    g4 "Yes, I know you want this! Yes!"
-                    call her_head("................","base","ahegao_raised",cheeks="blush") 
-                    
-                else:
+                if whoring <= 21:
                     call her_head("[genie_name], actually I never agreed to this...","shock","worriedCl") 
                     m "What are you complaining about, [hermione_name]?"
                     m "I'm not even touching your ass..."
@@ -604,12 +592,30 @@ label hg_pf_ShowMeYourAss: #LV.3 (Whoring = 9 - 11)
                     call nar(">You start to stroke your cock even harder...") 
                     g4 "Yes, I know you want this! Yes!"
                     call her_head("................","disgust","down_raised",cheeks="blush") 
-
+                else:
+                    call her_head("ah...","base","ahegao_raised",cheeks="blush") 
+                    call nar(">Hermione looks back and sees you stroking your cock.") 
+                    call her_head("It's so big...","open","baseL",cheeks="blush") 
+                    call her_head("You just couldn't help yourself, could you [genie_name]?","base","baseL",cheeks="blush") 
+                    call her_head("..................","base","ahegao_raised",cheeks="blush") 
+                    m "Yes... Yes, like that..."
+                    m "Yes, shake that ass [hermione_name]..."
+                    call her_head("..............","base","ahegao_raised",cheeks="blush") 
+                    call her_head("well, so be it...","open","baseL",cheeks="blush") 
+                    call her_head("But you must promise me not to...","soft","baseL",cheeks="blush") 
+                    call her_head("Not to... ehm...","open","baseL",cheeks="blush") 
+                    call her_head("Not to cum... on me, [genie_name]...","base","ahegao_raised",cheeks="blush") 
+                    m "Fine, whatever..."
+                    m "Oh, you little slut. You nasty little slut!"
+                    call her_head(".......................","base","ahegao_raised",cheeks="blush") 
+                    ">You start to stroke your cock even harder..."
+                    g4 "Yes, I know you want this! Yes!"
+                    call her_head("................","base","ahegao_raised",cheeks="blush") 
 
             ### GENIE STARTS CUMMING ###
 
             #First and second event.
-            if whoring < 18:
+            if whoring <= 17:
                 menu:
                     "-Cum on the floor-":
 
@@ -700,7 +706,7 @@ label hg_pf_ShowMeYourAss: #LV.3 (Whoring = 9 - 11)
                         call her_main("","disgust","down_raised",xpos="right",ypos="base") 
                         pause.5
 
-                        if whoring < 15:
+                        if whoring <= 14:
                             call her_main("How could you do this to me, [genie_name]?!","scream","angry") 
                             call her_main("My ass is covered in cum!","angry","angry") 
                         else:
@@ -716,15 +722,12 @@ label hg_pf_ShowMeYourAss: #LV.3 (Whoring = 9 - 11)
                         hide screen hermione_main
                         call blkfade 
 
-                        if whoring < 15:
+                        if whoring <= 14:
                             $ mad += 20
                         else:
                             $ mad += 10
-
-
             #Third Event.
             else: #18+
-
                 menu:
                     g4 "Argh! (I'm about to cum!)"
 
@@ -808,9 +811,7 @@ label hg_pf_ShowMeYourAss: #LV.3 (Whoring = 9 - 11)
                 call ctc 
 
                 hide screen hermione_main
-                call blkfade 
-
-                        
+                call blkfade
     
     $ hermione_ass_cum = False
 
@@ -832,8 +833,8 @@ label hg_pf_ShowMeYourAss: #LV.3 (Whoring = 9 - 11)
     show screen bld1
     call her_main("","","",trans="fade",xpos="right",ypos="base") 
 
-    if whoring < 18:
-        if whoring < 15:
+    if whoring <= 17:
+        if whoring <= 14:
             call her_main("Can I have my payment now?","base","ahegao_raised",cheeks="blush") 
             if current_payout < 100:
                 $ mad +=7
@@ -853,18 +854,12 @@ label hg_pf_ShowMeYourAss: #LV.3 (Whoring = 9 - 11)
         her "Now if you don't mind I'd better go. my classes are about to start."
     else:
         her "I'd better go now then. It's getting pretty late..."
-    
-    $ new_request_08_heart = 1
-    $ hg_pf_ShowMeYourAss_OBJ.hearts_level = 1 #Event hearts level (0-3)
 
-    if whoring >= 9 and whoring < 12:
-        $ new_request_08_heart = 1
+    if whoring <= 12:
         $ hg_pf_ShowMeYourAss_OBJ.hearts_level = 1 #Event hearts level (0-3)
-    if whoring >= 12 and whoring < 15:
-        $ new_request_08_heart = 2
+    if 12 <= whoring <= 14:
         $ hg_pf_ShowMeYourAss_OBJ.hearts_level = 2 #Event hearts level (0-3)
-    if whoring >= 15:
-        $ new_request_08_heart = 3
+    if 15 <= whoring:
         $ hg_pf_ShowMeYourAss_OBJ.hearts_level = 3 #Event hearts level (0-3)
 
     if whoring < 12:
@@ -880,22 +875,22 @@ label hg_pf_ShowMeYourAss: #LV.3 (Whoring = 9 - 11)
     call her_walk("desk","door",2.5) 
 
     #First event.
-    if whoring >= 9 and whoring < 12:
+    if whoring <= 12:
         call her_head("(How degrading... why do i keep agreeing to this...?)","disgust","down_raised",cheeks="blush") 
 
     #Second event.
-    elif whoring >= 12 and whoring < 15:
+    elif 12 <= whoring <= 14:
         call her_head("........................","disgust","down_raised",cheeks="blush") 
 
     #Third event.
-    elif whoring >= 12:
+    elif 12 <= whoring <= 17:
         call her_head("{size=-5}(That was so exhilerating...){/size}","base","ahegao_raised",cheeks="blush") 
         call her_head("{size=-5}(No, Hermione, you silly girl!){/size}","angry","angry",cheeks="blush") 
         call her_head("{size=-5}(it was shameful! good girls don't get turned on by stripping for their headmaster!){/size}","angry","angry",cheeks="blush") 
         call her_head(".................................","base","ahegao_raised",cheeks="blush") 
-    elif whoring >= 18 and aftersperm:
+    elif 18 <= whoring:
         call her_head("{size=-5}(That was so exhilarating...){/size}","base","ahegao_raised",cheeks="blush") 
-        call her_head("{size=-5}(i wonder what he'll ask me to do next...?){/size}","open","ahegao_raised",cheeks="blush") 
+        call her_head("{size=-5}(I wonder what he'll ask me to do next...?){/size}","open","ahegao_raised",cheeks="blush") 
     
     $ aftersperm = False #Shows cum stains on Hermione's uniform.
     

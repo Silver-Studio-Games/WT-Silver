@@ -1,9 +1,4 @@
-
-
-### Panty Thief ###
-
-################### REQUEST_03 (Level 02) (Available during daytime only). "Give me your panties" ###############################
-label hg_ps_PantyThief: #(Whoring = 3 - 5)
+label hg_ps_PantyThief:
     hide screen hermione_main
     with d3
     m "{size=-4}(I could ask her to take off her panties and give them to me before she leaves for classes today.){/size}"
@@ -20,9 +15,8 @@ label hg_ps_PantyThief: #(Whoring = 3 - 5)
     if whoring <=2:
         jump too_much
     
-    if hg_ps_PantyThief_OBJ.points == 0 and whoring <= 5: #First time this event taking place. and LEVEL 02.   <===================================== ONE TIME EVENT.
+    if hg_ps_PantyThief_OBJ.points == 0 and whoring <= 5:
         stop music fadeout 10.0
-        $ new_request_03_heart = 1 #Event hearts level (0-3)
         $ hg_ps_PantyThief_OBJ.hearts_level = 1 #Event hearts level (0-3)
         
         call her_main("W-what?","open","worried") 
@@ -67,15 +61,14 @@ label hg_ps_PantyThief: #(Whoring = 3 - 5)
         call her_main("...I hope nobody will notice that I have no underwear on today...","annoyed","worriedL") 
         call her_main("Oh, and I will be back tonight to pick them up, [genie_name].","open","base") 
         m "Of course. Your panties will be right here on my desk, waiting for you..."
-        call her_main(".............","angry","worriedCl",emote="05") 
-        jump hg_ps_PantyThief_ends
+        call her_main(".............","angry","worriedCl",emote="05")
 
-    else: #<========================================================================================== FIRST EVENT!
+    else:
         if hg_ps_PantyThief_OBJ.points >= 1:
             her "Again, [genie_name]?"
             m "Yes, again..."
         her "Here..."
-        if whoring >= 12: #LEVEL 05
+        if 12 <= whoring:
             hide screen hermione_main
             with d3
             call nar(">Hermione pulls her panties out of her pocket...") 
@@ -89,10 +82,8 @@ label hg_ps_PantyThief: #(Whoring = 3 - 5)
             call nar(">Hermione takes off her panties and hands them over to you...") 
         call nar(">Hermione's panties acquired.") 
         call her_main("Well, the classes are about to start, so I'd better go now...","soft","base") 
-    
-    label hg_ps_PantyThief_ends:
-        
-    $ hg_ps_PantyThief_OBJ.inProgress = True #True when Hermione has no panties on.
+            
+    $ hg_ps_PantyThief_OBJ.inProgress = True
     
     hide screen blktone
     
@@ -106,9 +97,171 @@ label hg_ps_PantyThief: #(Whoring = 3 - 5)
         play music "music/Music for Manatees.mp3" fadein 1 fadeout 1 # NIGHT MUSIC
         $ hermione_sleeping = True
         jump night_main_menu
-        
-label hg_ps_PantyThief_soaked:### PANTIES SOAKED IN CUM ###
-    if whoring >= 3 and whoring <= 5: # LEVEL 02
+      
+label hg_ps_PantyThief_complete:
+    $ hg_ps_PantyThief_OBJ.complete = True
+    
+    call play_sound("door") #Sound of a door opening.
+    call her_walk("door","mid",2) 
+    pause.5
+    
+    call her_main("Good evening, [genie_name]...","base","base",xpos="right",ypos="base") 
+    call play_music("chipper_doodle") # HERMIONE'S THEME.
+    
+    menu:
+        "\"Here are your panties.\"":
+            if hg_ps_PantyThief_SoakedPantiesFlag:
+                call hg_ps_PantyThief_soaked
+            else:
+                her "Thank you, [genie_name]."
+                her "And my payment?"
+                m "Of course."
+                
+        "\"How was your day, [hermione_name]?\"":
+            if  whoring <= 5:
+                $ hg_ps_PantyThief_OBJ.hearts_level = 1 #Event hearts level (0-3)
+                $ sc34CG(1, 10)
+                call her_main("Oh...","soft","base",xpos="base",ypos="base") 
+                her "Quite ordinary actually..."
+                call her_main("Although... I couldn't help but worry that somebody would notice somehow...","soft","baseL") 
+                call her_main(".....","annoyed","worriedL") 
+                hide screen sccg 
+                call her_main("Can I have my panties back now?","open","base",xpos="right",ypos="base",trans="fade") 
+                m "Of course..."
+                hide screen hermione_main
+                with d3
+                call nar(">You give Hermione her panties back...") 
+                if hg_ps_PantyThief_SoakedPantiesFlag:
+                    call hg_ps_PantyThief_soaked
+                else:
+                    call her_main("And my payment?","open","base") 
+                    m "Yes, yes..."
+                    
+            elif 6 <= whoring <= 8:
+                $ hg_ps_PantyThief_OBJ.hearts_level = 2 #Event hearts level (0-3)
+                $ sc34CG(1, 5)
+                call her_main("Oh...","soft","base",xpos="base",ypos="base") 
+                her "It was quite ordinary really..."
+                her "I spent some time with my classmates..."
+                her "And we had a short \"MRM\" meeting after that..."
+                call her_main("I gave a short speech on \"Why it is wrong to sell sexual favours in exchange for house points\"...","open","closed") 
+                call her_main("I felt bad that I had to give the speech without any underwear on...","annoyed","angryL") 
+                hide screen sccg
+                call her_main(xpos="right",ypos="base",trans="fade") 
+                
+                menu:
+                    "\"You little hypocrite!\"":
+                        $ mad +=5
+                        call her_main("[genie_name]?","open","base") 
+                        m "You sold your panties to me this morning..."
+                        m "And a couple of hours later you already publicly condemned that exact behaviour..."
+                        #m "What would you call this?"
+                        #call her_main("I know you are right, [genie_name]...","annoyed","angryL")
+                        call her_main("(But we need the points...)","annoyed","angryL") 
+                        call her_main("Can I have my payment now please?","disgust","glance") 
+                        m "What about your panties?"
+                        call her_main("Oh, them too of course...","angry","worriedCl",emote="05") 
+                        if hg_ps_PantyThief_SoakedPantiesFlag:
+                            call hg_ps_PantyThief_soaked
+                        else:
+                            pass
+                    "\"It's for the greater good...\"":
+                        her "Exactly!"
+                        her "We need those points badly..."
+                        her "It is not my fault that the system is so corrupted..."
+                        call her_main("I shall remain a symbol of righteousness to my peers, no matter what!","open","closed") 
+                        call her_main("Can I have my panties back now, please?","open","base") 
+                        if hg_ps_PantyThief_SoakedPantiesFlag:
+                            call hg_ps_PantyThief_soaked
+                        else:
+                            her "And my payment."
+                            
+            elif 9 <= whoring:
+                $ hg_ps_PantyThief_OBJ.hearts_level = 3 #Event hearts level (0-3)
+                $ sc34CG(1, 11)
+                call her_main("Another ordinary day at hogwarts...","open","closed",xpos="base",ypos="base") 
+                her "Nothing worth mentioning happened today..."
+                call her_main("Although I have to admit...","annoyed","worriedL") 
+                her "It was oddly empowering to have no underwear on..."
+                her "Hm..."
+                hide screen sccg
+                call her_main("Can I have my panties back now please?","base","base",xpos="right",ypos="base",trans="fade") 
+                m "Of course..."
+                hide screen hermione_main
+                with d3
+                call nar(">You give Hermione her panties back...") 
+                if hg_ps_PantyThief_SoakedPantiesFlag:
+                    call hg_ps_PantyThief_soaked
+                    if 9 <= whoring <= 15:
+                        m "You can go now."
+                        call her_main("What about my points?","scream","angryCl") 
+                        m "You still want points after I just gave you a gift?"
+                        her "What gift?"
+                        m "You're wearing it"
+                        her "What, semen soaked panties?"
+                        m "if you'd prefer the points then just take them off"
+                        call her_main("well... I am already wearing them","annoyed","worriedL") 
+                        m "then say thank you for the gift"
+                        call her_main("Thank you, [genie_name]...","annoyed","suspicious") 
+                        m "You can go now."
+                        her "Good night, [genie_name]."
+                    elif 16 <= whoring:
+                        $ hg_ps_PantyThief_OBJ.hearts_level = 4
+                        m "You can go now."
+                        call her_main("yes, [genie_name]","angry","down_raised") 
+                        m "After you say thank you. "
+                        call her_main("Thank you for what?","angry","wink") 
+                        m "For my cum"
+                        call her_main("...","base","down") 
+                        call her_main("Thank you for your cum [genie_name]...","grin","dead") 
+                        m "You may go now."
+                        her "Good night, [genie_name]."
+                else:
+                    call her_main("And my payment?","base","base")
+                    m "Yes, yes..."
+                    $ gryffindor +=15
+                    m "Fifteen points to \"Gryffindor\", [hermione_name]. Well deserved." 
+                    her "Thank you, [genie_name]..."
+                    m "You can go now."
+                    her "Good night, [genie_name]."
+                    
+    if whoring < 9:
+        $ gryffindor +=15
+        m "Fifteen points to \"Gryffindor\", [hermione_name]. Well deserved." 
+        her "Thank you, [genie_name]..."
+        m "You can go now."
+        her "Good night, [genie_name]."
+        #m "Yes, good night..."
+    
+    if whoring <= 5:
+        $ whoring +=1
+    
+    $ hg_ps_PantyThief_OBJ.points += 1
+    $ hg_ps_PantyThief_OBJ.inProgress = False #False when favor is not in progress
+    $ hg_ps_PantyThief_SoakedPantiesFlag = False #TRUE if you jerked off in panties
+    
+    hide screen hermione_main
+    hide screen blkfade
+    hide screen bld1
+    hide screen blktone 
+    call her_chibi("stand","mid","base") 
+    show screen genie
+    with d3
+    
+    call her_walk("mid","leave",2) 
+    
+    if daytime:
+        play music "music/Brittle Rille.mp3" fadein 1 fadeout 1 # DAY MUSIC
+        $ hermione_takes_classes = True
+        jump day_main_menu
+    else:
+        play music "music/Music for Manatees.mp3" fadein 1 fadeout 1 # NIGHT MUSIC
+        $ hermione_sleeping = True
+        jump night_main_menu
+
+  
+label hg_ps_PantyThief_soaked:
+    if 3 <= whoring <= 5:
         call her_main("Hm....?","annoyed","down",xpos="right",ypos="base") 
         call her_main("[genie_name]? What is this?","angry","angry") 
         her "What have you done to them?"
@@ -154,7 +307,7 @@ label hg_ps_PantyThief_soaked:### PANTIES SOAKED IN CUM ###
             "\"Well, suit yourself...\"":
                 pass
                 
-    if whoring >= 6 and whoring <= 8: # LEVEL 03 (SECOND EVENT)
+    if 6 <= whoring <= 8:
         call her_main("My panties...","annoyed","down",xpos="right",ypos="base") 
         call her_main("What happened to them [genie_name]?","annoyed","down") 
         
@@ -176,9 +329,9 @@ label hg_ps_PantyThief_soaked:### PANTIES SOAKED IN CUM ###
         call her_main("(This feels funny...)","angry","worriedCl",emote="05") 
         call her_main("Will this be all, [genie_name]?","upset","wink") 
         
-    if whoring >= 9 and whoring <= 15: #LEVEL 04+ (THIRD EVENT)
+    if 9 <= whoring <= 15:
         call her_main("My panties...","annoyed","down",xpos="right",ypos="base") 
-        if hg_ps_PantyThief_SoakedPantiesFlag:
+        if hg_ps_PantyThief_SoakedAgain:
             her "They are covered in something slimy again..."
         else:
             her "They are covered in something slimy..."
@@ -215,9 +368,9 @@ label hg_ps_PantyThief_soaked:### PANTIES SOAKED IN CUM ###
         hide screen hermione_main
         call nar(">Hermione swiftly slides her drenched panties on...") 
         
-    elif whoring > 15: ###New variant of the event
+    elif 16 <= whoring:
         call her_main("My panties...","base","ahegao_raised",xpos="right",ypos="base") 
-        if hg_ps_PantyThief_OBJ.points >= 1:
+        if hg_ps_PantyThief_SoakedAgain:
             her "You came all over them again..."
         else:
             her "You came all over them..."
@@ -263,165 +416,5 @@ label hg_ps_PantyThief_soaked:### PANTIES SOAKED IN CUM ###
                 m "There, nice and clean."
                 call her_main("*Yes [genie_name]*","soft","ahegao") 
     
-    jump back_from_soaked
-    
-label hg_ps_PantyThief_complete: # WHORING LEVEL 02 <=================
-    $ hg_ps_PantyThief_OBJ.complete = True
-    
-    call play_sound("door") #Sound of a door opening.
-    call her_walk("door","mid",2) 
-    pause.5
-    
-    call her_main("Good evening, [genie_name]...","base","base",xpos="right",ypos="base") 
-    call play_music("chipper_doodle") # HERMIONE'S THEME.
-    
-    menu:
-        "\"Here are your panties.\"":
-            if hg_ps_PantyThief_SoakedPantiesFlag:
-                jump hg_ps_PantyThief_soaked
-            else:
-                her "Thank you, [genie_name]."
-                her "And my payment?"
-                m "Of course."
-                
-        "\"How was your day, [hermione_name]?\"":
-            if  whoring <= 5: #WHORING LVL 02. EVENT LEVEL: 01
-                $ new_request_03_heart = 1 #Event hearts level (0-3)
-                $ hg_ps_PantyThief_OBJ.hearts_level = 1 #Event hearts level (0-3)
-                $ sc34CG(1, 10)
-                call her_main("Oh...","soft","base",xpos="base",ypos="base") 
-                her "Quite ordinary actually..."
-                call her_main("Although... I couldn't help but worry that somebody would notice somehow...","soft","baseL") 
-                call her_main(".....","annoyed","worriedL") 
-                hide screen sccg 
-                call her_main("Can I have my panties back now?","open","base",xpos="right",ypos="base",trans="fade") 
-                m "Of course..."
-                hide screen hermione_main
-                with d3
-                call nar(">You give Hermione her panties back...") 
-                if hg_ps_PantyThief_SoakedPantiesFlag:
-                    jump hg_ps_PantyThief_soaked
-                else:
-                    call her_main("And my payment?","open","base") 
-                    m "Yes, yes..."
-                    
-            elif whoring >= 6 and whoring <= 8: #WHORING LVL 03. EVENT LEVEL 02.
-                $ new_request_03_heart = 2 #Event hearts level (0-3)
-                $ hg_ps_PantyThief_OBJ.hearts_level = 2 #Event hearts level (0-3)
-                $ sc34CG(1, 5)
-                call her_main("Oh...","soft","base",xpos="base",ypos="base") 
-                her "It was quite ordinary really..."
-                her "I spent some time with my classmates..."
-                her "And we had a short \"MRM\" meeting after that..."
-                call her_main("I gave a short speech on \"Why it is wrong to sell sexual favours in exchange for house points\"...","open","closed") 
-                call her_main("I felt bad that I had to give the speech without any underwear on...","annoyed","angryL") 
-                hide screen sccg
-                call her_main(xpos="right",ypos="base",trans="fade") 
-                
-                menu:
-                    "\"You little hypocrite!\"":
-                        $ mad +=5
-                        call her_main("[genie_name]?","open","base") 
-                        m "You sold your panties to me this morning..."
-                        m "And a couple of hours later you already publicly condemned that exact behaviour..."
-                        #m "What would you call this?"
-                        #call her_main("I know you are right, [genie_name]...","annoyed","angryL")
-                        call her_main("(But we need the points...)","annoyed","angryL") 
-                        call her_main("Can I have my payment now please?","disgust","glance") 
-                        m "What about your panties?"
-                        call her_main("Oh, them too of course...","angry","worriedCl",emote="05") 
-                        if hg_ps_PantyThief_SoakedPantiesFlag:
-                            jump hg_ps_PantyThief_soaked
-                        else:
-                            pass
-                    "\"It's for the greater good...\"":
-                        her "Exactly!"
-                        her "We need those points badly..."
-                        her "It is not my fault that the system is so corrupted..."
-                        call her_main("I shall remain a symbol of righteousness to my peers, no matter what!","open","closed") 
-                        call her_main("Can I have my panties back now, please?","open","base") 
-                        if hg_ps_PantyThief_SoakedPantiesFlag:
-                            jump hg_ps_PantyThief_soaked
-                        else:
-                            her "And my payment."
-                            
-            elif whoring >= 9: #WHORING LVL 04. EVENT LEVEL 03.
-                $ new_request_03_heart = 3 #Event hearts level (0-3)
-                $ hg_ps_PantyThief_OBJ.hearts_level = 3 #Event hearts level (0-3)
-                $ sc34CG(1, 11)
-                call her_main("Another ordinary day at hogwarts...","open","closed",xpos="base",ypos="base") 
-                her "Nothing worth mentioning happened today..."
-                call her_main("Although I have to admit...","annoyed","worriedL") 
-                her "It was oddly empowering to have no underwear on..."
-                her "Hm..."
-                hide screen sccg
-                call her_main("Can I have my panties back now please?","base","base",xpos="right",ypos="base",trans="fade") 
-                m "Of course..."
-                hide screen hermione_main
-                with d3
-                call nar(">You give Hermione her panties back...") 
-                if hg_ps_PantyThief_SoakedPantiesFlag:
-                    jump hg_ps_PantyThief_soaked
-                else:
-                    call her_main("And my payment?","base","base") 
-                    m "Yes, yes..."
-                    
-    label back_from_soaked:
-    if hg_ps_PantyThief_SoakedPantiesFlag and whoring >= 9 and whoring <= 15 :
-        m "You can go now."
-        call her_main("What about my points?","scream","angryCl") 
-        m "You still want points after I just gave you a gift?"
-        her "What gift?"
-        m "You're wearing it"
-        her "What, semen soaked panties?"
-        m "if you'd prefer the points then just take them off"
-        call her_main("well... I am already wearing them","annoyed","worriedL") 
-        m "then say thank you for the gift"
-        call her_main("Thank you, [genie_name]...","annoyed","suspicious") 
-        m "You can go now."
-        her "Good night, [genie_name]."
-    elif hg_ps_PantyThief_SoakedPantiesFlag and whoring > 15:
-        $ hg_ps_PantyThief_OBJ.hearts_level = 4 #Event hearts level (0-4)
-        m "You can go now."
-        call her_main("yes, [genie_name]","angry","down_raised") 
-        m "After you say thank you. "
-        call her_main("Thank you for what?","angry","wink") 
-        m "For my cum"
-        call her_main("...","base","down") 
-        call her_main("Thank you for your cum [genie_name]...","grin","dead") 
-        m "You may go now."
-        her "Good night, [genie_name]."
-    else:
-        $ gryffindor +=15
-        m "Fifteen points to \"Gryffindor\", [hermione_name]. Well deserved." 
-        her "Thank you, [genie_name]..."
-        m "You can go now."
-        her "Good night, [genie_name]."
-        #m "Yes, good night..."
-    
-    if whoring <= 5:
-        $ whoring +=1
-    
-    $ hg_ps_PantyThief_OBJ.points += 1
-    $ hg_ps_PantyThief_OBJ.inProgress = False #False when favor is not in progress
-    $ hg_ps_PantyThief_SoakedPantiesFlag = False #TRUE if you jerked off in panties
-    
-    hide screen hermione_main
-    hide screen blkfade
-    hide screen bld1
-    hide screen blktone 
-    call her_chibi("stand","mid","base") 
-    show screen genie
-    with d3
-    
-    call her_walk("mid","leave",2) 
-    
-    if daytime:
-        play music "music/Brittle Rille.mp3" fadein 1 fadeout 1 # DAY MUSIC
-        $ hermione_takes_classes = True
-        jump day_main_menu
-    else:
-        play music "music/Music for Manatees.mp3" fadein 1 fadeout 1 # NIGHT MUSIC
-        $ hermione_sleeping = True
-        jump night_main_menu
-
+    $ hg_ps_PantyThief_SoakedAgain = True
+    return

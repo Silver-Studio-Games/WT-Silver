@@ -1,9 +1,3 @@
-
-
-### HERMIONE PERSONAL FAVOUR 4 ###
-
-### BUTT MOLESTER ###
-
 label hg_pf_ButtMolester:
     hide screen hermione_main 
     with d3
@@ -13,7 +7,8 @@ label hg_pf_ButtMolester:
 
     m "{size=-4}(I'll just molest her butt a little.){/size}"
 
-    if hg_pf_ButtMolester_OBJ.points < 1:
+    # First time event
+    if hg_pf_ButtMolester_OBJ.points == 0:
         menu:
             "\"(Yes, let's do it!)\"":
                 pass
@@ -27,7 +22,7 @@ label hg_pf_ButtMolester:
                 m "[hermione_name], before I request a favor, I'd like you to dress up."
                 call her_main("As what?","open","worriedL") 
                 m "A maid."
-                if whoring >= 5:
+                if 5 <= whoring:
                     call her_main("A maid?","base","squint") 
                     m "A french maid."
                     call her_main("...","base","baseL") 
@@ -43,21 +38,19 @@ label hg_pf_ButtMolester:
     hide screen hermione_main
     with d3
 
-    if whoring > 8 and not cho_known:
+    if 9 <= whoring and not cho_known:
         jump cho_intro
     
-    #First time event
-    if whoring >= 0 and whoring <= 5:
-
-        $ new_request_05_heart = 1
+    if 0 <= whoring <= 5:
         $ hg_pf_ButtMolester_OBJ.hearts_level = 1 #Event hearts level (0-3)
 
         m "Come closer, child. Let me molest your butt a little."
-        if whoring < 3:
+        if whoring <= 2:
             call her_main("My--","soft","surprised") 
             call her_main("My butt?!","shock","shocked") 
             jump too_much
 
+        # First time event
         if hg_pf_ButtMolester_OBJ.points == 0 and whoring <= 5: #First time
             stop music fadeout 5.0
             call her_head("[genie_name]!?","mad","wide",cheeks="blush",xpos="base",ypos="base") 
@@ -414,9 +407,7 @@ label hg_pf_ButtMolester:
                         jump connection_of_rapes
 
     #Second Event
-    elif whoring >= 6 and whoring <= 15:
-
-        $ new_request_05_heart = 2
+    elif 6 <= whoring <= 15:
         $ hg_pf_ButtMolester_OBJ.hearts_level = 2 #Event hearts level (0-3)
 
         m "Come closer, [hermione_name]. Let me molest your butt a little."
@@ -660,9 +651,7 @@ label hg_pf_ButtMolester:
     
 
     #Third Event
-    elif whoring >= 16:
-
-        $ new_request_05_heart = 3
+    elif 16 <= whoring:
         $ hg_pf_ButtMolester_OBJ.hearts_level = 3 #Event hearts level (0-3)
 
         hide screen bld1
@@ -1149,17 +1138,12 @@ label hg_pf_ButtMolester:
     hide screen hermione_main
     with d3
     
-    if whoring >= 3 and whoring <= 5: #First level. Not happy.
-
+    if 3 <= whoring <= 5: #First level. Not happy.
         call her_walk("mid","door",2) 
-
         call her_head("...........................","disgust","down_raised",cheeks="blush") 
-
         pause.5
         call her_chibi("leave","door","base") 
-
     else:
-
         call her_walk("mid","leave",2) 
     
     if whoring < 6: #Adds points till 6.
@@ -1178,15 +1162,4 @@ label hg_pf_ButtMolester:
         call play_music("night_theme") 
         $ hermione_sleeping = True
         jump night_main_menu
-    
-
-
-
-
-
-
-
-
-
-
-
+ 

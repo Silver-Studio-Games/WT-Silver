@@ -12,7 +12,9 @@ label hg_pf_TalkToMe:
     $ menu_y = 0.5 #Menu is moved to the middle.
 
     m "{size=-4}(All I'll do is have an innocent conversation with her...){/size}"
-    if hg_pf_TalkToMe_OBJ.points < 1:
+    
+    # First time event
+    if hg_pf_TalkToMe_OBJ.points == 0:
 
         menu:
             "\"(Yes, let's do that.)\"":
@@ -20,6 +22,7 @@ label hg_pf_TalkToMe:
             "\"(Not right now.)\"":
                 jump silver_requests
 
+    # Choose outfit if avalable
     if hg_maid_OBJ.purchased or hg_gryffCheer_OBJ.purchased or hg_slythCheer_OBJ.purchased or hg_msMarvel_OBJ.purchased or hg_heartDancer_OBJ.purchased or hg_powerGirl_OBJ.purchased or hg_harleyQuinn_OBJ.purchased:
         m "\"(Should I ask her to dress up?)\""
         menu:
@@ -69,9 +72,10 @@ label hg_pf_TalkToMe:
 
     m "Alright then..."
     m "Just tell me some news about you."
-    call her_main("","open","suspicious") 
-    
-    if hg_pf_TalkToMe_OBJ.points == 0: #First time this event taking place.
+    call her_main("","open","suspicious")
+
+    # First time this event taking place.
+    if hg_pf_TalkToMe_OBJ.points == 0: 
         her "Ehm... Alright..."
         her "I just stand here and talk then...? Like this?"
     else:
@@ -82,10 +86,8 @@ label hg_pf_TalkToMe:
     
     m "Well?"
 
-    #First time event
+    # First time event
     if hg_pf_TalkToMe_OBJ.points == 0 and whoring <=5:
-
-        $ new_request_01_heart = 1 #Event hearts level (0-3)#Event hearts level (0-3)
         $ hg_pf_TalkToMe_OBJ.hearts_level = 1 #Event hearts level (0-3)
 
         call her_main("Em... very well...","open","worried") 
@@ -95,8 +97,6 @@ label hg_pf_TalkToMe:
     #Event 1 and 2
     if whoring >= 0 and  whoring <= 5:
         if whoring >= 3 and whoring <= 5:
-
-            $ new_request_01_heart = 2 #Event hearts level (0-3)
             $ hg_pf_TalkToMe_OBJ.hearts_level = 2 #Event hearts level (0-3)
 
         call her_main("My life has been quite uneventful lately, to be honest...","annoyed","angryL") 
@@ -169,8 +169,6 @@ label hg_pf_TalkToMe:
 
     #Event 3
     elif whoring >= 6:
-
-        $ new_request_01_heart = 3 #Event hearts level (0-3)
         $ hg_pf_TalkToMe_OBJ.hearts_level = 3 #Event hearts level (0-3)
 
         call her_main("My life has been quite uneventful lately, to be honest...","annoyed","angryL") 

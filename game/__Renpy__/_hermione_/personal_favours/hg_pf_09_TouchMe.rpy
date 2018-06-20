@@ -26,7 +26,7 @@ label hg_pf_TouchMe: #LV.5 (Whoring = 12 - 14)
                 m "[hermione_name], before I request a favor, I'd like you to dress up."
                 call her_main("As what?","open","worriedL") 
                 m "A Cheerleader."
-                if whoring >= 17:
+                if 17 <= whoring:
                     call her_main("A Cheerleader?","annoyed","annoyed") 
                     m "For gryffindor."
                     call her_main("...","upset","wink") 
@@ -43,84 +43,105 @@ label hg_pf_TouchMe: #LV.5 (Whoring = 12 - 14)
     
     call bld 
 
-    #First Event.
-    if hg_pf_TouchMe_OBJ.points == 0:
+    if hg_pf_TouchMe_OBJ.points < 2:
 
-        m "[hermione_name]."
-        call her_main("Yes, [genie_name]?","base","base",xpos="mid",ypos="base") 
-        m "Do you know what a \"handjob\" is?"
+        #First Event.
+        if hg_pf_TouchMe_OBJ.points == 0:
 
-        if whoring < 12:
-            jump too_much
+            m "[hermione_name]."
+            call her_main("Yes, [genie_name]?","base","base",xpos="mid",ypos="base") 
+            m "Do you know what a \"handjob\" is?"
 
-        call her_main("Why?","annoyed","annoyed") 
-        m "I feel like getting one..."
-        call her_main("[genie_name]!","angry","angry") 
-        m "Just another favour. No big deal, right?"
-        call her_main("......","disgust","glance") 
-        call her_main("{size=-7}I want 100 house points for this...{/size}","angry","worriedCl",emote="05") 
-        m "Huh? What was that?"
-        call her_main("I want 100 house points for this!!!","scream","worriedCl") 
-        m "100 house points, huh?"
-        m "And you will stroke my cock and everything?"
-        call her_main("{size=-7}Yes...{/size}","disgust","glance") 
-        m "Sorry, I couldn't hear you..."
-        call her_main("Yes, I said yes! I will stroke your cock, [genie_name]!","scream","worriedCl") 
-    
-        $ new_request_16_heart = 1
-        $ hg_pf_TouchMe_OBJ.hearts_level = 1 #Event hearts level (0-3)
+            if whoring <= 11:
+                jump too_much
 
-        label back_to_handjob_choices:
+            $ hg_pf_TouchMe_OBJ.hearts_level = 1 #Event hearts level (0-3)
 
-        menu:
-            m "..."
-            "\"You will get 15 house points.\"":
-                $ mad +=7
-                call her_main("For 15 house points I suppose I could let you molest me a little, but that is all you'll be getting, [genie_name].","annoyed","angryL") 
-                her "I will not stoop as low as to sell handjobs for 15 house points."
-                her "That is just insulting, [genie_name]."
-                jump back_to_handjob_choices
+            call her_main("Why?","annoyed","annoyed") 
+            m "I feel like getting one..."
+            call her_main("[genie_name]!","angry","angry") 
+            m "Just another favour. No big deal, right?"
+            call her_main("......","disgust","glance") 
+            call her_main("{size=-7}I want 100 house points for this...{/size}","angry","worriedCl",emote="05") 
+            m "Huh? What was that?"
+            call her_main("I want 100 house points for this!!!","scream","worriedCl") 
+            m "100 house points, huh?"
+            m "And you will stroke my cock and everything?"
+            call her_main("{size=-7}Yes...{/size}","disgust","glance") 
+            m "Sorry, I couldn't hear you..."
+            call her_main("Yes, I said yes! I will stroke your cock, [genie_name]!","scream","worriedCl") 
+        
+            label back_to_handjob_choices:
+            menu:
+                m "..."
+                "\"You will get 15 house points.\"":
+                    $ mad +=7
+                    call her_main("For 15 house points I suppose I could let you molest me a little, but that is all you'll be getting, [genie_name].","annoyed","angryL") 
+                    her "I will not stoop as low as to sell handjobs for 15 house points."
+                    her "That is just insulting, [genie_name]."
+                    jump back_to_handjob_choices
 
-            "\"you will get 45 house points.\"":
-                if mad > 7: #You could spam points into infinity with the choice above.
-                    $ mad = 7
-                call her_main(".....","annoyed","angryL") 
-                call her_main("45 house points...?","open","down") 
-                her "This could put \"Gryffindor\" back in the lead..."
-                m "Is that a \"yes\"?"
-                call her_main("Yes, it is a yes, [genie_name].","annoyed","annoyed") 
-                m "Great!"
+                "\"you will get 45 house points.\"":
+                    call her_main(".....","annoyed","angryL") 
+                    call her_main("45 house points...?","open","down") 
+                    her "This could put \"Gryffindor\" back in the lead..."
+                    m "Is that a \"yes\"?"
+                    call her_main("Yes, it's a yes, [genie_name].","annoyed","annoyed") 
+                    m "Great!"
 
-            "\"you will get 100 house points.\"":
-                call play_music("chipper_doodle") # HERMIONE'S THEME.
-                $ current_payout = 100 #Used when haggling about price of th favor.
-                $ mad = 0
-                call her_main("100 house points?!","scream","wide_stare") 
-                her "This will definitely put \"Gryffindor\" in the lead!"
-                m "Is that a \"yes\" then?"
-                call her_main("Of course!","smile","happyCl") 
-                call her_main("If it will bring \"Gryffindor\" 100 house points, I don't mind touching your... thing a little.","smile","happyCl",emote="06") 
+                "\"you will get 100 house points.\"":
+                    call play_music("chipper_doodle") # HERMIONE'S THEME.
+                    $ current_payout = 100 #Used when haggling about price of th favor.
+                    $ mad = 0
+                    call her_main("100 house points?!","scream","wide_stare") 
+                    her "This will definitely put \"Gryffindor\" in the lead!"
+                    m "Is that a \"yes\" then?"
+                    call her_main("Of course!","smile","happyCl") 
+                    call her_main("If it will bring \"Gryffindor\" 100 house points, I don't mind touching your... thing a little.","smile","happyCl",emote="06") 
 
 
-        call play_music("playful_tension") # SEX THEME.
-        hide screen hermione_main                                                                                                                                                                                   #HERMIONE
-        hide screen genie
-        show screen chair_left
-        hide screen desk
-        show screen desk
-        call gen_chibi("jerking_off","on_girl","base") 
+            call play_music("playful_tension") # SEX THEME.
+            hide screen hermione_main                                                                                                                                                                                   #HERMIONE
+            hide screen genie
+            show screen chair_left
+            hide screen desk
+            show screen desk
+            call gen_chibi("jerking_off","on_girl","base") 
 
-        hide screen bld1
-        hide screen blktone
-        with fade
-        call ctc 
+            hide screen bld1
+            hide screen blktone
+            with fade
+            call ctc 
 
-        show screen bld1
-        call her_main("...........","open","base",xpos="right",ypos="base") 
-        m "Whenever you're ready, [hermione_name]."
-        pause.5
+            show screen bld1
+            call her_main("...........","open","base",xpos="right",ypos="base") 
+            m "Whenever you're ready, [hermione_name]."
+            pause.5
 
-        label event_01_round_02:
+        #Second Event.
+        elif hg_pf_TouchMe_OBJ.points == 1:
+            $ hg_pf_TouchMe_OBJ.hearts_level = 2 #Event hearts level (0-3)
+
+            m "[hermione_name]?"
+            call her_main("Yes, [genie_name]?","base","base",xpos="mid",ypos="base") 
+            m "Do you know what a \"handjob\" is?"
+            call her_main("You have asked me that already, [genie_name].","disgust","glance") 
+            m "Ah, that's right."
+            m "Well, I want you to play with my cock again."
+            call her_main("[genie_name], you are being vulgar again...","upset","closed") 
+            m "Fine, fine."
+            m "[hermione_name], I would like to buy another favour from you today."
+            call her_main("Of course, [genie_name].","annoyed","angryL") 
+            g9 "The favour being you playing with my cock!"
+            call her_main("..............","disgust","glance") 
+            m "Oh, come on. For the honour of the \"Gryffindors\"?"
+            call her_main(".............","angry","angry") 
+            g9 "Play with my cock for the honour of the \"Gryffindors\", [hermione_name]!"
+            call her_main("Stop saying that, [genie_name]...","scream","angry",emote="01") 
+            m "Come on [hermione_name], it's not like I'm asking you to do this for free."
+            call her_main(".......","annoyed","angryL") 
+            stop music fadeout 4.0
+
         hide screen hermione_main
         call blkfade 
 
@@ -424,9 +445,7 @@ label hg_pf_TouchMe: #LV.5 (Whoring = 12 - 14)
                 call her_main("I... don't think so, [genie_name].","annoyed","annoyed") 
                 call her_main("I really need to go. Can I just get paid now?") 
 
-
             "-Just start cumming-":
-
                 with hpunch
                 g4 "ARGH!"
                 call blkfade 
@@ -501,40 +520,8 @@ label hg_pf_TouchMe: #LV.5 (Whoring = 12 - 14)
                         m "Nobody will even notice."
                         call her_main("...I would like to get paid now.","annoyed","annoyed") 
 
-
-    #Second Event.
-    elif hg_pf_TouchMe_OBJ.points == 1:
-    
-        $ new_request_16_heart = 2
-        $ hg_pf_TouchMe_OBJ.hearts_level = 2 #Event hearts level (0-3)
-
-        m "[hermione_name]?"
-        call her_main("Yes, [genie_name]?","base","base",xpos="mid",ypos="base") 
-        m "Do you know what a \"handjob\" is?"
-        call her_main("You have asked me that already, [genie_name].","disgust","glance") 
-        m "Ah, that's right."
-        m "Well, I want you to play with my cock again."
-        call her_main("[genie_name], you are being vulgar again...","upset","closed") 
-        m "Fine, fine."
-        m "[hermione_name], I would like to buy another favour from you today."
-        call her_main("Of course, [genie_name].","annoyed","angryL") 
-        g9 "The favour being you playing with my cock!"
-        call her_main("..............","disgust","glance") 
-        m "Oh, come on. For the honour of the \"Gryffindors\"?"
-        call her_main(".............","angry","angry") 
-        g9 "Play with my cock for the honour of the \"Gryffindors\", [hermione_name]!"
-        call her_main("Stop saying that, [genie_name]...","scream","angry",emote="01") 
-        m "Come on [hermione_name], it's not like I'm asking you to do this for free."
-        call her_main(".......","annoyed","angryL") 
-        stop music fadeout 4.0
-
-        jump event_01_round_02 #Sets up handjob.
-
-
     #Third Event.
-    elif hg_pf_TouchMe_OBJ.points >= 2:
-    
-        $ new_request_16_heart = 3
+    else:
         $ hg_pf_TouchMe_OBJ.hearts_level = 3 #Event hearts level (0-3)
         
         m "[hermione_name]?"
@@ -756,17 +743,7 @@ label hg_pf_TouchMe: #LV.5 (Whoring = 12 - 14)
                 m "Fine, whatever, let's just move on then..."
                 
             "{size=-4}\"-Manual user input-\"{/size}":
-
-                # The phrase in the brackets is the text that the game will display to prompt 
-                # the player to enter the name they've chosen.
-
-                $ tmp_name = renpy.input("(Use keyboard to enter the phrase.)")
-
-                $ tmp_name = tmp_name.strip()
-                # The .strip() instruction removes any extra spaces the player may have typed by accident.
-
-                #  If the player can't be bothered to choose a name, then we
-                #  choose a suitable one for them:
+                $ tmp_name = renpy.input("(Use keyboard to enter the phrase.)").strip()
                 if tmp_name == "":
                     $ tmp_name="I'm a whore."
                     call her_main("Hm...?","annoyed","worriedL") 
@@ -808,148 +785,144 @@ label hg_pf_TouchMe: #LV.5 (Whoring = 12 - 14)
             m "..."
             "\"(Yes, I must warn her).\"":
                 g4 "I think I'm about to--"
-                if whoring >= 18: # LEVEL 07
-                    jump hg_pf_TouchMe_KissSuck
-                else:
-                    pass
-                ">Hermione swiftly pulls her shirt up..."
-                ">She then pushes your already dribbling cock against her belly and covers it up again..."
-                ">The sensation of her skin under your engorged cock almost makes you lightheaded..."
-                ">Hermione placed your cock a bit higher than you would expect..."
-                ">You can feel her incredibly soft tits rubbing against the tip of your cock..."
-               
-                call cum_block 
+                if whoring <= 18:
+                    ">Hermione swiftly pulls her shirt up..."
+                    ">She then pushes your already dribbling cock against her belly and covers it up again..."
+                    ">The sensation of her skin under your engorged cock almost makes you lightheaded..."
+                    ">Hermione placed your cock a bit higher than you would expect..."
+                    ">You can feel her incredibly soft tits rubbing against the tip of your cock..."
+                   
+                    call cum_block 
 
-                g4 "{size=+5}ARGH! YES!!!{/size}"
-              
-                
-                call play_music("chipper_doodle") # HERMIONE'S THEME.
-                
-                call her_head("!!!!!!!!!!!","shock","wide") 
-                
-                call gen_chibi("cumming_under_shirt") 
-                hide screen blktone
-                call hide_blkfade 
-                call ctc 
-                        
-                $ aftersperm = True
-                
-                g4 "Argh! You whore!"
-                show screen blktone
-                call her_main("Yes, [genie_name]! Just let it out!","base","down") 
-                g4 "Argh! Fucking slut!"
-                call her_main("Ah!! It's so hot!","smile","glance") 
-                call her_main("And it's getting everywhere! So much of it!","soft","ahegao") 
-                call her_main("...[genie_name].") 
-                g4 "Argh!!!"
-                m "............"
-                m "I think I am done..."
-                call her_main("Ah, alright...","angry","wink") 
-                call her_main("..............","base","down") 
-                call her_main("You came so much this time, [genie_name]...","soft","ahegao") 
-                call ctc 
-                call blkfade 
-                
-                ">Hermione releases your still pulsating cock."
-                
-                hide screen chair_left
-                hide screen desk
-                call her_chibi("stand","desk","base") 
-                call gen_chibi("hide") 
-                show screen genie
-                show screen bld1
-                hide screen blkfade
-                
-                if daytime:
-                    call her_main("Well, I think I'd better go now... my Classes are about to start.","base","base",xpos="right",ypos="base") 
-                else:
-                    call her_main("Well, I think I'd better go now...  It's getting late.","base","base",xpos="right",ypos="base") 
+                    g4 "{size=+5}ARGH! YES!!!{/size}"
+                  
                     
-                m "Will you be alright in those clothes?"
-                call her_main("What?","open","down") 
-                call her_main("Oh. Yes, I will be fine...","grin","baseL") 
-                call her_main("It may soak through a little here and there, but I doubt that anyone will notice.","base","happyCl") 
-                m "Hm... You could just put it in your mouth next time, and avoid the trouble..."
-                call her_main("And swallow your hot spunk like that, [genie_name]?","angry","wink") 
-                m "Would keep your clothes clean."
-                
-                if whoring <= 15:
-                    call her_main("With all due respect [genie_name]...","upset","closed") 
-                    call her_main("Not for the meagre 45 points...","angry","wink") 
-                    call her_main("Speaking of which. Can I get may payment now please?") 
+                    call play_music("chipper_doodle") # HERMIONE'S THEME.
+                    
+                    call her_head("!!!!!!!!!!!","shock","wide") 
+                    
+                    call gen_chibi("cumming_under_shirt") 
+                    hide screen blktone
+                    call hide_blkfade 
+                    call ctc 
+                            
+                    $ aftersperm = True
+                    
+                    g4 "Argh! You whore!"
+                    show screen blktone
+                    call her_main("Yes, [genie_name]! Just let it out!","base","down") 
+                    g4 "Argh! Fucking slut!"
+                    call her_main("Ah!! It's so hot!","smile","glance") 
+                    call her_main("And it's getting everywhere! So much of it!","soft","ahegao") 
+                    call her_main("...[genie_name].") 
+                    g4 "Argh!!!"
+                    m "............"
+                    m "I think I am done..."
+                    call her_main("Ah, alright...","angry","wink") 
+                    call her_main("..............","base","down") 
+                    call her_main("You came so much this time, [genie_name]...","soft","ahegao") 
+                    call ctc 
+                    call blkfade 
+                    
+                    ">Hermione releases your still pulsating cock."
+                    
+                    hide screen chair_left
+                    hide screen desk
+                    call her_chibi("stand","desk","base") 
+                    call gen_chibi("hide") 
+                    show screen genie
+                    show screen bld1
+                    hide screen blkfade
+                    
+                    if daytime:
+                        call her_main("Well, I think I'd better go now... my Classes are about to start.","base","base",xpos="right",ypos="base") 
+                    else:
+                        call her_main("Well, I think I'd better go now...  It's getting late.","base","base",xpos="right",ypos="base") 
+                        
+                    m "Will you be alright in those clothes?"
+                    call her_main("What?","open","down") 
+                    call her_main("Oh. Yes, I will be fine...","grin","baseL") 
+                    call her_main("It may soak through a little here and there, but I doubt that anyone will notice.","base","happyCl") 
+                    m "Hm... You could just put it in your mouth next time, and avoid the trouble..."
+                    call her_main("And swallow your hot spunk like that, [genie_name]?","angry","wink") 
+                    m "Would keep your clothes clean."
+                    
+                    if whoring <= 15:
+                        call her_main("With all due respect [genie_name]...","upset","closed") 
+                        call her_main("Not for the meagre 45 points...","angry","wink") 
+                        call her_main("Speaking of which. Can I get may payment now please?") 
+                    else:
+                        call her_main("Maybe next time...","angry","wink") 
+                        call her_main("Can I get may payment now please?","angry","wink")
                 else:
-                    call her_main("Maybe next time...","angry","wink") 
-                    call her_main("Can I get may payment now please?","angry","wink") 
+                    call hg_pf_TouchMe_KissSuck
 
             "\"(Nah... no need).\"":
                 g4 "Here! Take this, whore!"
-                if whoring >= 18: # LEVEL 07
-                    jump hg_pf_TouchMe_KissSuck
+                if whoring <= 18:
+                    with hpunch
+                    g4 "ARGH!"
+                    call blkfade 
+                    
+                    call her_head("WHAT?!","shock","wide") 
+                    g4 "Take this!"
+
+                    call cum_block 
+                    
+                    g4 "{size=+5}ARGH! YES!!!{/size}"
+                    
+                    call her_head("!!!!!!!!!!!","shock","wide") 
+                    
+                    call gen_chibi("cumming_under_shirt") 
+
+                    hide screen bld1
+                    call hide_blkfade 
+                    call ctc 
+                    
+                    $ aftersperm = True
+                    call her_head(".......................","angry","wide") 
+                    call gen_chibi("cumming_on_shirt_pause") 
+                    m "Yes... I Feel so much better now..."
+                    call ctc 
+                    
+                    hide screen hermione_main
+                    with d3
+                    
+                    $ u_sperm = "characters/hermione/face/auto_06.png"
+                    $ uni_sperm = True
+                    
+                    show screen bld1
+                    call her_main("","soft","base",tears="soft",xpos="right",ypos="base") 
+                    call ctc 
+                    her ".........."
+                    m "Well, I think that's about it..."
+                    call blkfade 
+                    
+                    call her_chibi("stand","desk","base") 
+                    hide screen chair_left
+                    hide screen desk
+                    call gen_chibi("hide") 
+                    show screen genie
+                    call play_music("chipper_doodle") # HERMIONE'S THEME.
+                    
+                    hide screen blkfade
+                    call her_main("[genie_name]! What have you done?","scream","worriedCl") 
+                    
+                    m "What?"
+                    call her_main("You came all over me, [genie_name]...","scream","worriedCl") 
+                    call her_main("What a mess...","angry","down_raised") 
+                    call her_main("[genie_name], you should have warned me.","upset","closed") 
+                    m "It's your fault, [hermione_name]!"
+                    call her_main("My fault?","angry","base") 
+                    m "Yes! You got me going too well..."
+                    m "I forgot about everything else..."     
+                    call her_main("Oh...","angry","wink") 
+                    her "Well, what's done is done..."
+                    call her_main("I will just wipe it off and hope that nobody will notice...","grin","dead") 
+                    call her_main("Can I get my payment now?","angry","wink")
                 else:
-                    pass
-                with hpunch
-                g4 "ARGH!"
-                call blkfade 
+                    call hg_pf_TouchMe_KissSuck
                 
-                call her_head("WHAT?!","shock","wide") 
-                g4 "Take this!"
-
-                call cum_block 
-                
-                g4 "{size=+5}ARGH! YES!!!{/size}"
-                
-                call her_head("!!!!!!!!!!!","shock","wide") 
-                
-                call gen_chibi("cumming_under_shirt") 
-
-                hide screen bld1
-                call hide_blkfade 
-                call ctc 
-                
-                $ aftersperm = True
-                call her_head(".......................","angry","wide") 
-                call gen_chibi("cumming_on_shirt_pause") 
-                m "Yes... I Feel so much better now..."
-                call ctc 
-                
-                hide screen hermione_main
-                with d3
-                
-                $ u_sperm = "characters/hermione/face/auto_06.png"
-                $ uni_sperm = True
-                
-                show screen bld1
-                call her_main("","soft","base",tears="soft",xpos="right",ypos="base") 
-                call ctc 
-                her ".........."
-                m "Well, I think that's about it..."
-                call blkfade 
-                
-                call her_chibi("stand","desk","base") 
-                hide screen chair_left
-                hide screen desk
-                call gen_chibi("hide") 
-                show screen genie
-                call play_music("chipper_doodle") # HERMIONE'S THEME.
-                
-                hide screen blkfade
-                call her_main("[genie_name]! What have you done?","scream","worriedCl") 
-                
-                m "What?"
-                call her_main("You came all over me, [genie_name]...","scream","worriedCl") 
-                call her_main("What a mess...","angry","down_raised") 
-                call her_main("[genie_name], you should have warned me.","upset","closed") 
-                m "It's your fault, [hermione_name]!"
-                call her_main("My fault?","angry","base") 
-                m "Yes! You got me going too well..."
-                m "I forgot about everything else..."     
-                call her_main("Oh...","angry","wink") 
-                her "Well, what's done is done..."
-                call her_main("I will just wipe it off and hope that nobody will notice...","grin","dead") 
-                call her_main("Can I get my payment now?","angry","wink") 
-    
-    label done_with_handjob:
-
     call blkfade 
 
     $ uni_sperm = False #Sperm layer is not displayed in hermione screen.
@@ -984,12 +957,9 @@ label hg_pf_TouchMe: #LV.5 (Whoring = 12 - 14)
     if whoring < 15:
         $ whoring +=1
     
-    if whoring >= 12 and whoring < 15:
-        $ new_request_16_heart = 1
+    if 12 <= whoring <= 14:
         $ hg_pf_TouchMe_OBJ.hearts_level = 1 #Event hearts level (0-3)
-
-    if whoring >= 15 and whoring < 18:
-        $ new_request_16_heart = 2
+    if 15 <= whoring <= 17:
         $ hg_pf_TouchMe_OBJ.hearts_level = 2 #Event hearts level (0-3)
     
     hide screen bld1
@@ -1014,7 +984,7 @@ label hg_pf_TouchMe: #LV.5 (Whoring = 12 - 14)
         jump night_main_menu     
     
 
-label hg_pf_TouchMe_KissSuck: #Jumps here after event #03 and if WHORING >= LEVEL 07 ### KISS SUCK! ###
+label hg_pf_TouchMe_KissSuck:
     ">Hermione swiftly puts the tip of your cock on her lips, as if to give it a kiss..."
     ">The simple gesture makes your dick practically explode with pleasure and waves of cum."
     
@@ -1077,18 +1047,4 @@ label hg_pf_TouchMe_KissSuck: #Jumps here after event #03 and if WHORING >= LEVE
     call her_main("[genie_name]!","angry","base") 
     her "...Can I just get paid now, please, [genie_name]?"
     
-    jump done_with_handjob
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return

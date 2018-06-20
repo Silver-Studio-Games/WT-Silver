@@ -7,7 +7,7 @@ label hg_pf_LetsHaveSex: #LV.7 (Whoring = 18 - 20)
     $ menu_x = 0.5 #Menu is moved to the middle.
     $ menu_y = 0.5 #Menu is moved to the middle.
 
-    if hg_pf_SuckIt_OBJ.points == 0:
+    if hg_pf_LetsHaveSex_OBJ.points == 0:
         m "{size=-4}(Should I ask her to have sex with me?){/size}"
         menu:
             "\"(Yes, let's do it!)\"":
@@ -15,14 +15,14 @@ label hg_pf_LetsHaveSex: #LV.7 (Whoring = 18 - 20)
             "\"(Not right now.)\"":
                 jump silver_requests
     
-    if hg_laraCroft_OBJ.purchased and hg_pf_SuckIt_OBJ.points >= 1:
+    if hg_laraCroft_OBJ.purchased and hg_pf_LetsHaveSex_OBJ.points >= 1:
         m "\"(Should I ask her to dress up?)\""
         menu:
             "\"(Yes, let's do it!)\"":
                 m "[hermione_name], before I request a favor, I'd like you to dress up."
                 call her_main("As what?","open","worriedL") 
                 m "As who. I want you to dress up as Lara Croft"
-                if whoring >= 22:
+                if 22 <= whoring:
                     call her_main("Who?","open","base") 
                     m "She's a video game character."
                     call her_main("...","annoyed","down") 
@@ -41,32 +41,41 @@ label hg_pf_LetsHaveSex: #LV.7 (Whoring = 18 - 20)
     
     call bld 
     
-    if whoring < 18:
+    if whoring <= 17:
         m "[hermione_name]..."
         m "Why don't you come over here and I pound your pussy for a bit..."
         g9 "With my cock!"
         jump too_much
-        
-    #First Event.
-    if hg_pf_LetsHaveSex_OBJ.points == 0:
-        m "[hermione_name]?"
-        call her_main("[genie_name]?","base","base") 
-        m "The favour I will be buying from you today..."
-        call her_main(".......?","base","base") 
-        m "How should I put this delicately...?"
-        call her_main("Is it sex, [genie_name]?","base","suspicious") 
-        m "Well, yes. How did you...?"
+    
+    #First+Second Event
+    if hg_pf_LetsHaveSex_OBJ.points < 2:
+        #First Event.
+        if hg_pf_LetsHaveSex_OBJ.points == 0:
+            m "[hermione_name]?"
+            call her_main("[genie_name]?","base","base") 
+            m "The favour I will be buying from you today..."
+            call her_main(".......?","base","base") 
+            m "How should I put this delicately...?"
+            call her_main("Is it sex, [genie_name]?","base","suspicious") 
+            m "Well, yes. How did you...?"
 
-        call her_main("Not a terribly difficult deduction all things considered...","base","glance") 
-        m "You don't mind then?"
-        call her_main("Of course, I mind, [genie_name]!","upset","closed") 
-        her "I am not a prostitute!"
-        m "But you'll do it anyway??"
-        call her_main("\"Gryffindor\" is falling behind again...","open","closed") 
-        her "What choice do I have...?"
-        m "Great!"
+            call her_main("Not a terribly difficult deduction all things considered...","base","glance") 
+            m "You don't mind then?"
+            call her_main("Of course, I mind, [genie_name]!","upset","closed") 
+            her "I am not a prostitute!"
+            m "But you'll do it anyway??"
+            call her_main("\"Gryffindor\" is falling behind again...","open","closed") 
+            her "What choice do I have...?"
+            m "Great!"
         
-        label your_ass:
+        #Second time event.
+        elif hg_pf_LetsHaveSex_OBJ.points == 1:
+            m "[hermione_name], are you keeping your pussy wet and ready for me?"
+            call her_main("[genie_name]!","scream","angryCl") 
+            m "Just say \"I do\" and come over here, [hermione_name]."
+            call her_main("...........","open","base") 
+            call her_main("I do....","angry","down_raised")
+
         hide screen hermione_main
         call blkfade 
         
@@ -107,8 +116,7 @@ label hg_pf_LetsHaveSex: #LV.7 (Whoring = 18 - 20)
         hide screen blkfade
         with fade
         call ctc 
-        
-           
+                   
         call play_music("playful_tension") # SEX THEME.
         
         #FUCKING
@@ -342,18 +350,8 @@ label hg_pf_LetsHaveSex: #LV.7 (Whoring = 18 - 20)
                 call her_head("[genie_name], you make no sense...","angry","base") 
                 call her_head("Can I please just get paid now...?") 
     
-    #Second time event.
-    elif hg_pf_LetsHaveSex_OBJ.points == 1:
-        m "[hermione_name], are you keeping your pussy wet and ready for me?"
-        call her_main("[genie_name]!","scream","angryCl") 
-        m "Just say \"I do\" and come over here, [hermione_name]."
-        call her_main("...........","open","base") 
-        call her_main("I do....","angry","down_raised") 
-        hide screen hermione_main    
-        jump your_ass
-    
-    #Third time event.
-    elif hg_pf_LetsHaveSex_OBJ.points >= 2:
+    #Third Event
+    elif hg_pf_LetsHaveSex_OBJ.points == 2:
         m "[hermione_name]..."
         m "Last night I had a dream..."
         g9 "You were lying on my desk and I was fucking your tight pussy like a madman..."
@@ -620,7 +618,7 @@ label hg_pf_LetsHaveSex: #LV.7 (Whoring = 18 - 20)
                     call her_head("Can I get my payment now?","angry","wink") 
                 $ uni_sperm = False #Sperm layer is not displayed in hermione screen.
 
-    #Fourth time event.
+    #Fourth Event
     elif hg_pf_LetsHaveSex_OBJ.points >= 3:
         m "[hermione_name]..."
         m "I have a favour to ask of you..."
@@ -639,10 +637,10 @@ label hg_pf_LetsHaveSex: #LV.7 (Whoring = 18 - 20)
         $ renpy.play('sounds/gltch.mp3')
         with hpunch
         with kissiris
-        call her_head("Ooooohhhhhhhhhhhh....{image=textheart}","scream","wide") #HERMIONE
+        call her_head("Ooooohhhhhhhhhhhh....{image=textheart}","scream","wide")
         hide screen genie
         
-        $ genie_chibi_xpos = -70 #-185 behind the desk. (Also 5 is something).
+        $ genie_chibi_xpos = -70
         $ genie_chibi_ypos = 10
         $ g_c_u_pic = "sex_ani"
         show screen chair_left
@@ -833,21 +831,12 @@ label hg_pf_LetsHaveSex: #LV.7 (Whoring = 18 - 20)
         $ whoring +=1
     
     if hg_pf_LetsHaveSex_OBJ.points == 0:
-        $ new_request_29_heart = 1
         $ hg_pf_LetsHaveSex_OBJ.hearts_level = 1 #Event hearts level (0-3)
     if hg_pf_LetsHaveSex_OBJ.points == 1:
-        $ new_request_29_heart = 2
         $ hg_pf_LetsHaveSex_OBJ.hearts_level = 2 #Event hearts level (0-3)
     if hg_pf_LetsHaveSex_OBJ.points >= 2:
-        $ new_request_29_heart = 3
         $ hg_pf_LetsHaveSex_OBJ.hearts_level = 3 #Event hearts level (0-3)
     
     $ hg_pf_LetsHaveSex_OBJ.points += 1
    
     jump end_hg_pf  #Resets screens. Hermione walks out. Resets Hermione.
-    
-
-
-
-
-

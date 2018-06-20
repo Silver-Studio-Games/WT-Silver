@@ -1,9 +1,3 @@
-
-
-### HERMIONE PERSONAL FAVOUR 6 ###
-
-### DANCE FOR ME ###
-
 label hg_pf_DanceForMe:
     hide screen hermione_main 
     with d3
@@ -26,7 +20,7 @@ label hg_pf_DanceForMe:
                 m "[hermione_name], before I request a favor, I'd like you to dress up."
                 call her_main("As what?","open","worriedL") 
                 m "A Dancer."
-                if whoring >= 15:
+                if 15 <= whoring:
                     call her_main("A Dancer?","scream","angryCl") 
                     m "Don't worry, your nipples will be covered."
                     call her_main("...","angry","worriedCl",emote="05") 
@@ -48,13 +42,12 @@ label hg_pf_DanceForMe:
         m "[hermione_name], I need you to dance for me a little."
         call her_main("You want me to...","open","worried") 
         
-        if whoring < 9:
+        if whoring <= 8:
             call her_main("...dance for you, [genie_name]?","open","worriedL") 
             jump too_much
         else:
             call her_main("...dance for you, [genie_name]?","open","wink") 
-            
-        $ new_request_11_heart = 1
+        
         $ hg_pf_DanceForMe_OBJ.hearts_level = 1 #Event hearts level (0-3)
 
         m "Yes... You think you could manage that?"
@@ -256,8 +249,6 @@ label hg_pf_DanceForMe:
 
     #Second Event
     if hg_pf_DanceForMe_OBJ.points == 1:
-
-        $ new_request_11_heart = 2
         $ hg_pf_DanceForMe_OBJ.hearts_level = 2 #Event hearts level (0-3)
         
         call bld 
@@ -589,8 +580,6 @@ label hg_pf_DanceForMe:
 
     #Third Event.
     if hg_pf_DanceForMe_OBJ.points >= 2:
-
-        $ new_request_11_heart = 3
         $ hg_pf_DanceForMe_OBJ.hearts_level = 3 #Event hearts level (0-3)
 
         call blktone 
@@ -984,10 +973,34 @@ label hg_pf_DanceForMe:
                                     jump civil_with_snape
                                     
                                 "\"(Pst! Remember why we are doing this!)\"":
+                                    # Hermione NOT ok with it.
+                                    if whoring <= 15:
+                                        call her_head("Oh...","open","wide") 
+                                        call her_head("No, I can't! This is just not worth it!","angry","worriedCl") 
+                                        call blkfade 
 
-                                    #Hermione is ok with it.
-                                    if whoring >= 15:
+                                        ">Hermione jumps off the desk and starts to put her clothes back on."
+                                        call sna_head("Well, this was awfully anticlimactic...","snape_03") 
+                                        g4 "You don't say..."
+                                        call sna_head("May as well leave now I suppose. I will talk to you later, Albus.","snape_03") 
+                                        m "Yes, later, Severus."
+                                        call sna_head("Miss Granger...","snape_04") 
+                                        call her_head("Professor...","angry","worriedCl") 
 
+                                        call sna_chibi("hide") 
+                                        call her_chibi("stand","desk","base") 
+                                        call play_sound("door") 
+                                        ">Professor Snape leaves..."
+                                        stop music fadeout 1.0
+
+                                        call her_head("....................","annoyed","dead") 
+                                        pause.5
+                                        ">.................{w}.................{w}.................{w}................."
+                                
+                                        call her_head("...Can I get paid now... [genie_name]...?","normal","worriedCl") 
+                                        jump done_with_dancing #Blkfade needs to be active!
+                                    # Hermione OK with it.
+                                    else:
                                         call her_main("Oh, right...","shock","wide") 
                                         call sna_head("What was that?","snape_05") 
                                         call her_main("Please don't mind what I just said...","silly","worriedCl",emote="05") 
@@ -1201,35 +1214,6 @@ label hg_pf_DanceForMe:
 
                                         call her_head("...Can I get paid now, please?","angry","worriedCl",emote="05") 
                                         jump done_with_dancing #Blkfade needs to be active!
-
-                                    #Hermione is ok with it.
-                                    else:
-
-                                        call her_head("Oh...","open","wide") 
-                                        call her_head("No, I can't! This is just not worth it!","angry","worriedCl") 
-                                        call blkfade 
-
-                                        ">Hermione jumps off the desk and starts to put her clothes back on."
-                                        call sna_head("Well, this was awfully anticlimactic...","snape_03") 
-                                        g4 "You don't say..."
-                                        call sna_head("May as well leave now I suppose. I will talk to you later, Albus.","snape_03") 
-                                        m "Yes, later, Severus."
-                                        call sna_head("Miss Granger...","snape_04") 
-                                        call her_head("Professor...","angry","worriedCl") 
-
-                                        call sna_chibi("hide") 
-                                        call her_chibi("stand","desk","base") 
-                                        call play_sound("door") 
-                                        ">Professor Snape leaves..."
-                                        stop music fadeout 1.0
-
-                                        call her_head("....................","annoyed","dead") 
-                                        pause.5
-                                        ">.................{w}.................{w}.................{w}................."
-                                
-                                        call her_head("...Can I get paid now... [genie_name]...?","normal","worriedCl") 
-                                        jump done_with_dancing #Blkfade needs to be active!
-
 
                         "-Just keep on watching-":
                             label civil_with_snape:
@@ -1543,7 +1527,27 @@ label hg_pf_DanceForMe:
                             menu:
                                 m "..."
                                 "\"I said, keep on dancing, [hermione_name]!\"":
-                                    if whoring >= 15: #LEVEL 06. You jerk off your cock and Hermione is OK with it.
+                                    # You jerk off your cock and Hermione is NOT OK with it.
+                                    if whoring <= 15:
+                                        stop music fadeout 1.0
+                                        
+                                        call her_head("No, [genie_name]!","annoyed","angryL") 
+                                        m "Huh?"
+                                        call blkfade 
+                                        
+                                        ">Hermione jumps off your desk and starts to put her clothes back on while glaring at you..."
+                                        m "Oh, come on! Don't leave me like that!"
+                                        
+                                        call her_head("The dance is over, [genie_name]!","soft","angry") 
+                                        pause 1
+                                        call her_head("I would like to get paid now!","annoyed","annoyed") 
+                                        m "Stubborn [hermione_name]..."
+                                        ">You reluctantly put your cock away..."
+                                        call her_head("I would like to get paid now.","annoyed","annoyed") 
+                                        jump done_with_dancing
+
+                                    #LEVEL 06. You jerk off your cock and Hermione is OK with it.
+                                    else:
                                         call her_head("But...","angry","worriedCl") 
                                         call her_head(".............................") 
                                         call her_head("Well, alright, but only if you will promise me not to....finish, [genie_name].","soft","angry") 
@@ -1813,26 +1817,7 @@ label hg_pf_DanceForMe:
                                                             call hide_blkfade 
                                                             call music_block 
                                                             jump could_not_flirt #Leaves without getting any points.
-                                                        
-
-                                    else: # You jerk off your cock and Hermione is NOT OK with it.
-                                        stop music fadeout 1.0
-                                        
-                                        call her_head("No, [genie_name]!","annoyed","angryL") 
-                                        m "Huh?"
-                                        call blkfade 
-                                        
-                                        ">Hermione jumps off your desk and starts to put her clothes back on while glaring at you..."
-                                        m "Oh, come on! Don't leave me like that!"
-                                        
-                                        call her_head("The dance is over, [genie_name]!","soft","angry") 
-                                        pause 1
-                                        call her_head("I would like to get paid now!","annoyed","annoyed") 
-                                        m "Stubborn [hermione_name]..."
-                                        ">You reluctantly put your cock away..."
-                                        call her_head("I would like to get paid now.","annoyed","annoyed") 
-                                        jump done_with_dancing
-                                        
+                                
                                 "\"Fine. There is no need for drama!\"": 
                                     call her_head("......................","annoyed","angryL") 
                                     pause.1
@@ -1985,12 +1970,4 @@ label hg_pf_DanceForMe:
     else:
         call play_music("night_theme") 
         $ hermione_sleeping = True
-        jump night_main_menu     
-    
-
-
-
-
-
-
-
+        jump night_main_menu

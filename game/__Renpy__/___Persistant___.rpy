@@ -101,32 +101,6 @@ label __init_variables:
     if not hasattr(renpy.store,'next_day'): #important!
         $ next_day = False
     
-    
-    if not hasattr(renpy.store,'new_request_01_heart'): #important!
-        $ new_request_01_heart = 0
-    if not hasattr(renpy.store,'new_request_02_heart'): #important!
-        $ new_request_02_heart = 0
-    if not hasattr(renpy.store,'new_request_03_heart'): #important!
-        $ new_request_03_heart = 0
-    if not hasattr(renpy.store,'new_request_04_heart'): #important!
-        $ new_request_04_heart = 0
-    if not hasattr(renpy.store,'new_request_05_heart'): #important!
-        $ new_request_05_heart = 0
-    if not hasattr(renpy.store,'new_request_08_heart'): #important!
-        $ new_request_08_heart = 0
-    if not hasattr(renpy.store,'new_request_11_heart'): #important!
-        $ new_request_11_heart = 0
-    if not hasattr(renpy.store,'new_request_12_heart'): #important!
-        $ new_request_12_heart = 0
-    if not hasattr(renpy.store,'new_request_16_heart'): #important!
-        $ new_request_16_heart = 0
-    if not hasattr(renpy.store,'new_request_22_heart'): #important!
-        $ new_request_22_heart = 0
-    if not hasattr(renpy.store,'new_request_29_heart'): #important!
-        $ new_request_29_heart = 0
-    if not hasattr(renpy.store,'new_request_31_heart'): #important!
-        $ new_request_31_heart = 0
-    
     if not hasattr(renpy.store,'pub_q_sex_teach'): #important!
         $ pub_q_sex_teach = False
     if not hasattr(renpy.store,'hg_pf_TheGamble_Flag'): #important!

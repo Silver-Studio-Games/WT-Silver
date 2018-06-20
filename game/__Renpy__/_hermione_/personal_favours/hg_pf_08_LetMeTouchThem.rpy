@@ -12,7 +12,7 @@ label hg_pf_LetMeTouchThem: #LV.4 (Whoring = 9 - 11)
     else:
         m "{size=-4}(I feel like playing with those titties again.){/size}"
 
-    if hg_pf_LetMeTouchThem_OBJ.points < 1:
+    if hg_pf_LetMeTouchThem_OBJ.points == 0:
         menu:
             "\"(Yes, let's do it!)\"":
                 pass
@@ -26,7 +26,7 @@ label hg_pf_LetMeTouchThem: #LV.4 (Whoring = 9 - 11)
                 m "[hermione_name], before I request a favor, I'd like you to dress up."
                 call her_main("As what?","open","worriedL") 
                 m "My christmas present."
-                if whoring >= 14:
+                if 14 <= whoring:
                     call her_main("Your present?","grin","baseL") 
                     m "Yes, I've been a very good boy this year."
                     call her_main("...","base","glance") 
@@ -47,7 +47,7 @@ label hg_pf_LetMeTouchThem: #LV.4 (Whoring = 9 - 11)
         m "[hermione_name]."
         call her_main("Yes, [genie_name]?","base","base",xpos="base",ypos="base") 
 
-        if whoring < 9:
+        if whoring <= 8:
             m "Come here and let me touch your titties!" #Bit of flavour text, lol.
             jump too_much
 
@@ -70,11 +70,8 @@ label hg_pf_LetMeTouchThem: #LV.4 (Whoring = 9 - 11)
         m "Well, I feel more like touching, actually..."
         her "...................................."
 
-
     else: #Not first time.
-
-        if whoring >= 9 and whoring < 15: # LEVEL 04 AND LEVEL 05 # NOT A WHORE YET.
-
+        if 9 <= whoring <= 14: # LEVEL 04 AND LEVEL 05 # NOT A WHORE YET.
             call bld 
             m "[hermione_name]..."
             call her_main("[genie_name]?","base","base",xpos="base",ypos="base") 
@@ -85,9 +82,7 @@ label hg_pf_LetMeTouchThem: #LV.4 (Whoring = 9 - 11)
             m "I'll give you 35 house points for this..."
             call her_main("..................","annoyed","angryL") 
             her "Well, alright... You can touch them a little..."
-
-        elif whoring >= 15: # LEVEL 06 and higher # NASTY WHORE.
-
+        elif 15 <= whoring: # LEVEL 06 and higher # NASTY WHORE.
             call bld 
             m "[hermione_name]..."
             call her_main("[genie_name]?","base","base",xpos="base",ypos="base") 
@@ -128,7 +123,7 @@ label hg_pf_LetMeTouchThem: #LV.4 (Whoring = 9 - 11)
             
 
             #First event. (HERMIONE IS UNWILLING).
-            if whoring >= 9 and whoring < 15:
+            if 9 <= whoring <= 14:
 
                 show screen blktone
                 call her_main("..............................","angry","down_raised") 
@@ -149,7 +144,7 @@ label hg_pf_LetMeTouchThem: #LV.4 (Whoring = 9 - 11)
                 call her_main("Ah...","open","worriedCl") 
                 m "Enjoying yourself, [hermione_name]?"
 
-                if whoring >= 9 and whoring < 12:
+                if 9 <= whoring <= 11:
                     call her_main("[genie_name], I am only doing this--","upset","closed") 
                     
                     call nar(">You squeeze both of her tits with force...") 
@@ -209,7 +204,7 @@ label hg_pf_LetMeTouchThem: #LV.4 (Whoring = 9 - 11)
                     ">You let go of Hermione's breasts..."
 
             #Third Event.
-            elif whoring >= 15:
+            elif 15 <= whoring:
 
                 show screen blktone
                 call her_main("Ah...","soft","ahegao") 
@@ -236,7 +231,7 @@ label hg_pf_LetMeTouchThem: #LV.4 (Whoring = 9 - 11)
                 call her_main("You are hurting me, [genie_name]...","shock","baseL",cheeks="blush",tears="soft") 
                 m "But do you enjoy it?"
 
-                if whoring < 18:
+                if whoring <= 17:
                     call her_main("Ah... Yes, [genie_name]... I don't know why, but I do...","clench","worried",cheeks="blush",tears="soft") 
                 else:
                     call her_main("Ah... Yes, [genie_name]... I love it...","silly","worried",cheeks="blush",tears="soft") 
@@ -264,7 +259,7 @@ label hg_pf_LetMeTouchThem: #LV.4 (Whoring = 9 - 11)
                 call her_main("...................","angry","suspicious",cheeks="blush") 
                 m "You want me to hurt you some more, don't you?"
 
-                if whoring < 18:
+                if whoring <= 17:
                     call her_main("I don't \"want to\"... ","shock","baseL",cheeks="blush",tears="soft") 
                     call her_main("But if you insist [genie_name]...","silly","worried",cheeks="blush",tears="soft") 
                     m "Well, I do insist... apparently."
@@ -280,13 +275,12 @@ label hg_pf_LetMeTouchThem: #LV.4 (Whoring = 9 - 11)
                 ">You spend some more time with Hermione's breasts..."
 
         "-Slap them-":
-
             show screen blktone
             call nar(">You give Hermione's tits a loud slap!") 
             call slap_her 
 
             #First Event (HERMIONE IS UNWILLING).
-            if whoring >= 9 and whoring <= 11:
+            if 9 <= whoring <= 11:
 
                 $ mad += 20
                 call her_main("!!!","scream","wide",cheeks="blush") 
@@ -310,9 +304,9 @@ label hg_pf_LetMeTouchThem: #LV.4 (Whoring = 9 - 11)
                 m "Well, no points for \"Gryffindor\" then..."
                 
                 jump could_not_flirt #Favor failed! #Needs Blkfade!
-                
+
             #Second Event.        
-            elif whoring >= 12 and whoring < 15:
+            elif 12 <= whoring <= 14:
 
                 call her_main("!!!","scream","wide",cheeks="blush") 
                 call her_main("Ouch!","angry","worried",cheeks="blush") 
@@ -336,7 +330,7 @@ label hg_pf_LetMeTouchThem: #LV.4 (Whoring = 9 - 11)
                 jump no_smacking_tits #Jumps to usual tits molesting scene.
 
             #Third Event.
-            elif whoring >= 15:
+            elif 15 <= whoring:
 
                 call her_main("Ah!!!","scream","wide",cheeks="blush") 
                 call her_main("[genie_name], why did you do that?","grin","glance",cheeks="blush") 
@@ -419,21 +413,17 @@ label hg_pf_LetMeTouchThem: #LV.4 (Whoring = 9 - 11)
     
     call her_main("Thank you, [genie_name]...","soft","baseL") 
     
-    if whoring < 12:
-        $ whoring +=1
-    
-    $ hg_pf_LetMeTouchThem_OBJ.points +=1
-
-    if whoring >= 9 and whoring < 12:
-        $ new_request_12_heart = 1
+    if 9 <= whoring <= 11:
         $ hg_pf_LetMeTouchThem_OBJ.hearts_level = 1 #Event hearts level (0-3)
-    if whoring >= 12 and whoring < 15:
-        $ new_request_12_heart = 2
+    if 12 <= whoring <= 14:
         $ hg_pf_LetMeTouchThem_OBJ.hearts_level = 2 #Event hearts level (0-3)
-    if whoring >= 15:
-        $ new_request_12_heart = 3
+    if 15 <= whoring:
         $ hg_pf_LetMeTouchThem_OBJ.hearts_level = 3 #Event hearts level (0-3)
 
+    if whoring < 12:
+        $ whoring +=1
+
+    $ hg_pf_LetMeTouchThem_OBJ.points +=1
 
     hide screen bld1
     hide screen hermione_main

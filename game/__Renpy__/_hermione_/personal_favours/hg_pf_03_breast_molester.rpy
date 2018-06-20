@@ -12,14 +12,16 @@ label hg_pf_BreastMolester:
     $ menu_y = 0.5 #Menu is moved to the middle.
 
     m "{size=-4}(I will molest her tits a little. Won't even ask her to bare them for me. Pretty harmless stuff.){/size}"
-
-    if hg_pf_BreastMolester_OBJ.points < 1:
+    
+    # First time event
+    if hg_pf_BreastMolester_OBJ.points == 0:
         menu:
             "\"(Yes, let's do it!)\"":
                 pass
             "\"(Not right now.)\"":
                 jump silver_requests
-
+    
+    # Choose outfit if avalable
     if hg_msMarvel_OBJ.purchased:
         m "\"(Should I ask her to dress up?)\""
         menu:
@@ -37,20 +39,17 @@ label hg_pf_BreastMolester:
                 else:
                     jump too_much
             "\"(Not right now.)\"":
-                pass            
-    
-    if whoring < 3: #Hermione refuses.
+                pass
+
+    # Hermione refuses.
+    if whoring < 3: 
         m "[hermione_name], would you mind if I play with your tits a little?"
         call her_main("Play with...?","shock","wide") 
         call her_main("My tits?!","angry","wide_stare") 
         jump too_much
     
-    #First time event
-    elif whoring >= 3 and whoring <= 5:
-
-        $ new_request_04_heart = 1 #Event hearts level (0-3)
-        $ hg_pf_BreastMolester_OBJ.hearts_level = 1 #Event hearts level (0-3)
-
+    # First time event
+    elif 3 <= whoring <= 5:
         m "Come closer, [hermione_name]..."        
         call her_head("Ehm... alright...","annoyed","angryL",xpos="base",ypos="base") 
         hide screen bld1
@@ -147,14 +146,7 @@ label hg_pf_BreastMolester:
                 call her_head("Aw.........","disgust","down_raised",cheeks="blush") 
 
     #Second Event
-    if whoring >= 6:
-        if whoring >= 6 and whoring <= 8:
-            $ new_request_04_heart = 2
-            $ hg_pf_BreastMolester_OBJ.hearts_level = 2 #Event hearts level (0-3)
-        else:
-            $ new_request_04_heart = 3
-            $ hg_pf_BreastMolester_OBJ.hearts_level = 3 #Event hearts level (0-3)
-
+    if 6 <= whoring:
         stop music fadeout 2.0
         m "Come closer [hermione_name]... I want to give your tits a massage..."
         call her_main("As you say, [genie_name]...","base","baseL",cheeks="blush") 
@@ -247,7 +239,6 @@ label hg_pf_BreastMolester:
     
     call hide_blkfade 
     
-
     if whoring < 6: #Adds points till 6.
         $ whoring +=1
 
@@ -270,21 +261,24 @@ label hg_pf_BreastMolester:
     hide screen hermione_main
     with d3
     
-    if whoring >= 13:
-
+    if 13 <= whoring:
         call her_walk("desk","door",3) 
-
         call her_head("(What about my points?)","disgust","down_raised",cheeks="blush") 
-        if whoring >= 20:
+        if 20 <= whoring:
             call her_head("(Eh, who cares)","base","ahegao_raised",cheeks="blush") 
         else:
             call her_head("(I'll just ask him about it next time...)","annoyed","angryL") 
-
         pause.5
         call her_chibi("leave","door","base") 
-
     else:
         call her_walk("desk","leave",3) 
+
+    if 3 <= whoring <= 5:
+        $ hg_pf_BreastMolester_OBJ.hearts_level = 1 #Event hearts level (0-3)
+    elif 6 <= whoring <= 12:
+        $ hg_pf_BreastMolester_OBJ.hearts_level = 2 #Event hearts level (0-3)
+    elif 13 <= whoring:
+        $ hg_pf_BreastMolester_OBJ.hearts_level = 3 #Event hearts level (0-3)
 
     $ hg_pf_BreastMolester_OBJ.points += 1
     

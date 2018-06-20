@@ -1,5 +1,3 @@
-
-
 label hg_pf_SuckIt: #LV.6 (Whoring = 15 - 17)
     hide screen hermione_main 
     with d3
@@ -12,7 +10,7 @@ label hg_pf_SuckIt: #LV.6 (Whoring = 15 - 17)
     else:
         m "{size=-4}(Should I ask the girl to give me another blowjob?){/size}"
     
-    if hg_pf_TouchMe_OBJ.points < 1:
+    if hg_pf_TouchMe_OBJ.points == 0:
         menu:
             "\"(Yes, let's do it!)\"":
                 pass
@@ -26,7 +24,7 @@ label hg_pf_SuckIt: #LV.6 (Whoring = 15 - 17)
                 m "[hermione_name], before I request a favor, I'd like you to dress up."
                 call her_main("As what?","open","worriedL",xpos=140) 
                 m "A Slytherin Cheerleader."
-                if whoring >= 10:
+                if 10 <= whoring:
                     call her_main("A Slytherin?","scream","angryCl") 
                     m "Just for a minute."
                     call her_main("...","angry","worriedCl",emote="05") 
@@ -44,32 +42,74 @@ label hg_pf_SuckIt: #LV.6 (Whoring = 15 - 17)
     
     call bld 
 
-    #Intro
-    if hg_pf_SuckIt_OBJ.points == 0: #<=== EVENT 01   FIRST EVENT
-
-        m "[hermione_name]?"
-        call her_main("Yes, [genie_name]?","base","base",xpos="mid",ypos="base") 
-        m "I plan to grant \"Gryffindor\" 55 house points today..."
-        m "If you suck me off..."
-
-        if whoring < 15: # LEVEL 05
-            jump too_much
-
-        call her_main("Oh...","open","down") 
-        call her_main("Alright.","base","down") 
-        m "Really? Just like that?"
-        call her_main("Yes. I know I'm supposed feel outraged...","angry","down_raised") 
-        call her_main("But somehow I do not...","angry","base") 
-        call her_main("I suppose I am just glad that I can help out my house...","base","down") 
-        call her_main("And if to do that I must put your penis in my mouth so be it...","upset","closed") 
-        m "Well, alright then."
-        call her_main("Although, now when I say it out loud like this...","angry","down_raised") 
-        m "Too late! You already said \"yes\"!"
-        call her_main("I know...","grin","worriedCl",emote="05") 
+    #First+Second Event
+    if hg_pf_SuckIt_OBJ.points < 2:
         
-        call her_walk_desk_blkfade 
-        
-        label blowjob_jumping:  # BLOWJOB
+        #First Event
+        if hg_pf_SuckIt_OBJ.points == 0:
+
+            m "[hermione_name]?"
+            call her_main("Yes, [genie_name]?","base","base",xpos="mid",ypos="base") 
+            m "I plan to grant \"Gryffindor\" 55 house points today..."
+            m "If you suck me off..."
+
+            if whoring <= 14:
+                jump too_much
+
+            call her_main("Oh...","open","down") 
+            call her_main("Alright.","base","down") 
+            m "Really? Just like that?"
+            call her_main("Yes. I know I'm supposed feel outraged...","angry","down_raised") 
+            call her_main("But somehow I do not...","angry","base") 
+            call her_main("I suppose I am just glad that I can help out my house...","base","down") 
+            call her_main("And if to do that I must put your penis in my mouth so be it...","upset","closed") 
+            m "Well, alright then."
+            call her_main("Although, now when I say it out loud like this...","angry","down_raised") 
+            m "Too late! You already said \"yes\"!"
+            call her_main("I know...","grin","worriedCl",emote="05") 
+            
+            call her_walk_desk_blkfade 
+
+        #Second Event.
+        elif hg_pf_SuckIt_OBJ.points == 1:
+            m "[hermione_name]?"
+            call her_main("[genie_name]?","base","base",xpos="mid",ypos="base") 
+            m "How about another blowjob?"
+            call play_music("playful_tension") # SEX THEME.
+            call her_main("[genie_name], how dare you propose such a thing to one of your pupils!","scream","angry",emote="01") 
+            m "Wha...?"
+            call her_main("This is unbecoming of a man of your standing.","scream","angry",emote="01") 
+            call her_main("You should be ashamed of yourself [genie_name]!","angry","angry") 
+
+            menu:
+                m "???"
+                "\"Fine. No points to you then! Leave!\"":
+                    call play_music("chipper_doodle") # HERMIONE'S THEME.
+                    call her_main("[genie_name], calm down, please.","grin","worriedCl",emote="05") 
+                    m "You are dismissed, [hermione_name]."
+                    call her_main("[genie_name], please, I didn't mean any of the things I said.","grin","worriedCl",emote="05") 
+                    m "What?"
+
+                "\"Ehm... I am sorry?\"":
+                    stop music fadeout 1.0
+                    call her_main("*Giggle*","base","base") 
+                    m "Huh?"
+                    call play_music("chipper_doodle") # HERMIONE'S THEME.
+                    call her_main("I got you... [genie_name].","grin","worriedCl",emote="05") 
+                    m "What?"
+
+            call her_main("Well, so much has happened lately...","base","base") 
+            her "I had so many new experiences that kind of changed the way I look at things..."
+            her "So I was just trying to imagine how the \"old me\" would've reacted to this."
+            m "So..."
+            g4 "You were messing with me then?"
+            call her_main("uhm... I'm sorry [genie_name], I didn't mean to...","angry","worriedCl",emote="05") 
+            g4 "You nasty little girl! You must be punished!"
+            g9 "I'll punish you with my cock!"
+            call her_main("...............................","angry","worriedCl",emote="05") 
+
+            call blkfade #Needs to be active first!
+
         call play_music("playful_tension") # SEX THEME.
         hide screen hermione_main                                                                                                                                                                                   #HERMIONE
         hide screen genie
@@ -346,47 +386,6 @@ label hg_pf_SuckIt: #LV.6 (Whoring = 15 - 17)
                 call her_head("Can I get paid before I leave, [genie_name]?","upset","wink") 
                 call blkfade 
                 $ aftersperm = True
-
-    #Second Event.
-    elif hg_pf_SuckIt_OBJ.points == 1:
-        m "[hermione_name]?"
-        call her_main("[genie_name]?","base","base",xpos="mid",ypos="base") 
-        m "How about another blowjob?"
-        call play_music("playful_tension") # SEX THEME.
-        call her_main("[genie_name], how dare you propose such a thing to one of your pupils!","scream","angry",emote="01") 
-        m "Wha...?"
-        call her_main("This is unbecoming of a man of your standing.","scream","angry",emote="01") 
-        call her_main("You should be ashamed of yourself [genie_name]!","angry","angry") 
-
-        menu:
-            m "???"
-            "\"Fine. No points to you then! Leave!\"":
-                call play_music("chipper_doodle") # HERMIONE'S THEME.
-                call her_main("[genie_name], calm down, please.","grin","worriedCl",emote="05") 
-                m "You are dismissed, [hermione_name]."
-                call her_main("[genie_name], please, I didn't mean any of the things I said.","grin","worriedCl",emote="05") 
-                m "What?"
-
-            "\"Ehm... I am sorry?\"":
-                stop music fadeout 1.0
-                call her_main("*Giggle*","base","base") 
-                m "Huh?"
-                call play_music("chipper_doodle") # HERMIONE'S THEME.
-                call her_main("I got you... [genie_name].","grin","worriedCl",emote="05") 
-                m "What?"
-
-        call her_main("Well, so much has happened lately...","base","base") 
-        her "I had so many new experiences that kind of changed the way I look at things..."
-        her "So I was just trying to imagine how the \"old me\" would've reacted to this."
-        m "So..."
-        g4 "You were messing with me then?"
-        call her_main("uhm... I'm sorry [genie_name], I didn't mean to...","angry","worriedCl",emote="05") 
-        g4 "You nasty little girl! You must be punished!"
-        g9 "I'll punish you with my cock!"
-        call her_main("...............................","angry","worriedCl",emote="05") 
-
-        call blkfade #Needs to be active first!
-        jump blowjob_jumping
 
     #Third Event.
     elif hg_pf_SuckIt_OBJ.points >= 2 and whoring < 21:
@@ -673,7 +672,7 @@ label hg_pf_SuckIt: #LV.6 (Whoring = 15 - 17)
                     
                 "\"What would you like?\"":
                     call her_head("If it is all the same to you, [genie_name]...","soft","ahegao") 
-                    if generating_points == 1:
+                    if renpy.random.random() < .5:
                         call her_head("I would like you to cum on my face, [genie_name].","grin","dead") 
                         call her_head("I read that it's good for the skin.") 
                     else:
@@ -692,7 +691,7 @@ label hg_pf_SuckIt: #LV.6 (Whoring = 15 - 17)
         her "*Slurp--?"
         call u_pause_ani 
 
-        if whoring < 21:
+        if whoring < 18:
             call her_head("uhm...","angry","down_raised") 
             call her_head("I eat cockroaches?","angry","base") 
             m "What the fuck?"
@@ -776,7 +775,7 @@ label hg_pf_SuckIt: #LV.6 (Whoring = 15 - 17)
                 call her_main(".............","grin","dead") #Smile.
                 call her_main("Can I get paid now?") 
 
-                if whoring >= 21:
+                if 18 <= whoring:
                     if daytime:
                         m "What, even after I just gave you lunch?"
                     else:
@@ -843,7 +842,7 @@ label hg_pf_SuckIt: #LV.6 (Whoring = 15 - 17)
                 m "Yes I did, [hermione_name]."
                 call her_main("Good, so Can I get paid now?","grin","dead") 
 
-                if whoring >= 21:
+                if 18 <= whoring:
                     m "What, even after I just gave you a salon treatment?"
                     m "Women pay a lot of money for a good facial."
                     call her_main(".............","annoyed","suspicious") #Smile.
@@ -852,7 +851,7 @@ label hg_pf_SuckIt: #LV.6 (Whoring = 15 - 17)
                 call blkfade 
     
     #Fourth Event
-    elif hg_pf_SuckIt_OBJ.points >= 2 and whoring >= 21:
+    elif hg_pf_SuckIt_OBJ.points >= 2 and 21 <= whoring:
         call play_music("playful_tension") # SEX THEME.
         m "Suck my dick, [hermione_name]."
         call her_main("Of course [genie_name]...","base","ahegao_raised",xpos="mid",ypos="base") 
@@ -1241,7 +1240,7 @@ label hg_pf_SuckIt: #LV.6 (Whoring = 15 - 17)
     pause.5
     
     call bld 
-    if whoring < 21:
+    if whoring <= 20:
         m "Yes, [hermione_name]. 55 points to \"Gryffindor\"." 
         $ gryffindor +=55
 
@@ -1254,15 +1253,12 @@ label hg_pf_SuckIt: #LV.6 (Whoring = 15 - 17)
         $ whoring +=1
         
     if hg_pf_SuckIt_OBJ.points == 0:
-        $ new_request_22_heart = 1
         $ hg_pf_SuckIt_OBJ.hearts_level = 1 #Event hearts level (0-4)
     if hg_pf_SuckIt_OBJ.points == 1:
-        $ new_request_22_heart = 2
         $ hg_pf_SuckIt_OBJ.hearts_level = 2 #Event hearts level (0-4)
     if hg_pf_SuckIt_OBJ.points >= 2:
-        $ new_request_22_heart = 3
         $ hg_pf_SuckIt_OBJ.hearts_level = 3 #Event hearts level (0-4)
-    if hg_pf_SuckIt_OBJ.points >= 2 and whoring > 21:
+    if hg_pf_SuckIt_OBJ.points >= 2 and 21 <= whoring:
         $ hg_pf_SuckIt_OBJ.hearts_level = 4 #Event hearts level (0-4)
     
     $ hg_pf_SuckIt_OBJ.points += 1
@@ -1275,9 +1271,3 @@ label hg_pf_SuckIt: #LV.6 (Whoring = 15 - 17)
     pause.5
 
     jump end_hg_pf #Hides screens. Hermione walks out. Resets Hermione.
-    
-
-
-
-
-
